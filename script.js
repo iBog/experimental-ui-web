@@ -361,6 +361,7 @@ const translations = {
 class ReceptionWebsite {
     constructor() {
         this.currentLanguage = localStorage.getItem('language') || 'en';
+        this.currentTheme = localStorage.getItem('theme') || 'light';
         this.isMobileMenuOpen = false;
         this.init();
     }
@@ -368,9 +369,11 @@ class ReceptionWebsite {
     init() {
         this.setupEventListeners();
         this.setupLanguageSystem();
+        this.setupThemeSystem();
         this.setupScrollAnimations();
         this.setupHeaderScroll();
         this.loadLanguage(this.currentLanguage);
+        this.loadTheme(this.currentTheme);
     }
 
     setupEventListeners() {
@@ -382,11 +385,41 @@ class ReceptionWebsite {
             });
         });
 
+        // Theme switcher
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                this.toggleTheme();
+            });
+        }
+
         // Mobile menu toggle
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
         if (mobileMenuToggle) {
             mobileMenuToggle.addEventListener('click', () => {
                 this.toggleMobileMenu();
+            });
+        }
+
+        // Mobile menu item clicks
+        document.querySelectorAll('.mobile-menu-item').forEach(item => {
+            item.addEventListener('click', () => {
+                // Close mobile menu when item is clicked
+                if (this.isMobileMenuOpen) {
+                    this.toggleMobileMenu();
+                }
+            });
+        });
+
+        // Logo click to scroll to top
+        const logoLink = document.getElementById('logo-link');
+        if (logoLink) {
+            logoLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
         }
 
@@ -475,55 +508,71 @@ class ReceptionWebsite {
         });
     }
 
+    setupThemeSystem() {
+        // Set initial theme button state
+        this.updateThemeButton();
+    }
+
+    toggleTheme() {
+        const newTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+        this.currentTheme = newTheme;
+        this.loadTheme(newTheme);
+        localStorage.setItem('theme', newTheme);
+    }
+
+    loadTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        this.updateThemeButton();
+    }
+
+    updateThemeButton() {
+        const themeIcon = document.getElementById('theme-icon');
+        if (themeIcon) {
+            if (this.currentTheme === 'dark') {
+                themeIcon.className = 'fas fa-moon';
+            } else {
+                themeIcon.className = 'fas fa-sun';
+            }
+        }
+    }
+
     toggleMobileMenu() {
         this.isMobileMenuOpen = !this.isMobileMenuOpen;
-        const navMenu = document.querySelector('.nav-menu');
+        const mobileMenu = document.querySelector('.mobile-menu');
         const mobileToggle = document.querySelector('.mobile-menu-toggle');
         
         if (this.isMobileMenuOpen) {
-            navMenu.style.display = 'flex';
-            navMenu.style.position = 'absolute';
-            navMenu.style.top = '100%';
-            navMenu.style.left = '0';
-            navMenu.style.right = '0';
-            navMenu.style.background = 'white';
-            navMenu.style.flexDirection = 'column';
-            navMenu.style.padding = '20px';
-            navMenu.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-            navMenu.style.borderRadius = '0 0 12px 12px';
-            
+            mobileMenu.classList.add('open');
             mobileToggle.classList.add('active');
         } else {
-            navMenu.style.display = '';
-            navMenu.style.position = '';
-            navMenu.style.top = '';
-            navMenu.style.left = '';
-            navMenu.style.right = '';
-            navMenu.style.background = '';
-            navMenu.style.flexDirection = '';
-            navMenu.style.padding = '';
-            navMenu.style.boxShadow = '';
-            navMenu.style.borderRadius = '';
-            
+            mobileMenu.classList.remove('open');
             mobileToggle.classList.remove('active');
         }
     }
 
     handleResize() {
-        if (window.innerWidth > 768 && this.isMobileMenuOpen) {
-            this.toggleMobileMenu();
-        }
+        // Optional: Close mobile menu on large screen resize if desired
+        // Removed automatic close to allow menu on desktop
     }
 
     handleScroll() {
         const header = document.querySelector('.header');
         const scrollY = window.scrollY;
+        const isDark = this.currentTheme === 'dark';
         
         if (scrollY > 50) {
-            header.style.background = 'rgba(255, 255, 255, 0.98)';
+            if (isDark) {
+                header.style.background = 'rgba(15, 23, 42, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            }
             header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
         } else {
-            header.style.background = 'rgba(255, 255, 255, 0.95)';
+            if (isDark) {
+                header.style.background = 'rgba(15, 23, 42, 0.95)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
             header.style.boxShadow = '';
         }
     }
