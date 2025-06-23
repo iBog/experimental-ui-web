@@ -72,8 +72,8 @@ const translations = {
         "privacy.section7.title": "Changes to This Policy",
         "privacy.section7.content": "We may update this privacy policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the \"Last Updated\" date.",
         "privacy.section8.title": "Contact Us",
-        "privacy.section8.content": "If you have any questions about this privacy policy, please contact us at privacy@reception-app.com or through our app's support section.",
-        "privacy.lastUpdated": "Last updated: January 1, 2024",
+        "privacy.section8.content": "If you have any questions about this privacy policy, please contact us at support@experimentalui.com or through our app's support section.",
+        "privacy.lastUpdated": "Last updated: June 26, 2025",
         // Terms of Service translations
         "terms.backToHome": "Back to Home",
         "terms.title": "Terms of Service",
@@ -244,8 +244,8 @@ const translations = {
         "privacy.section7.title": "Изменения в этой политике",
         "privacy.section7.content": "Мы можем время от времени обновлять эту политику конфиденциальности. Мы уведомим вас о любых изменениях, разместив новую политику на этой странице и обновив дату \"Последнее обновление\".",
         "privacy.section8.title": "Свяжитесь с нами",
-        "privacy.section8.content": "Если у вас есть вопросы об этой политике конфиденциальности, пожалуйста, свяжитесь с нами по адресу privacy@reception-app.com или через раздел поддержки нашего приложения.",
-        "privacy.lastUpdated": "Последнее обновление: 1 января 2024 г.",
+        "privacy.section8.content": "Если у вас есть вопросы об этой политике конфиденциальности, пожалуйста, свяжитесь с нами по адресу support@experimentalui.com или через раздел поддержки нашего приложения.",
+        "privacy.lastUpdated": "Последнее обновление: 26 Июня 2025 г.",
         // Terms of Service Russian translations
         "terms.backToHome": "Вернуться на главную",
         "terms.title": "Условия использования",
