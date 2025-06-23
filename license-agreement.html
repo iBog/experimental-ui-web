@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>License Agreement - Reception</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/reception-logo.png">
+    <style>
+        .legal-page {
+            padding: 120px 0 80px;
+            background: var(--gradient-primary);
+            min-height: 100vh;
+        }
+        .legal-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .legal-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .legal-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+        }
+        .legal-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+        }
+        .legal-content {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-100);
+        }
+        .legal-content h2 {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 32px 0 16px 0;
+            border-bottom: 2px solid var(--soft-blue);
+            padding-bottom: 8px;
+        }
+        .legal-content h2:first-child {
+            margin-top: 0;
+        }
+        .legal-content p {
+            color: var(--gray-700);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        .legal-content ul {
+            color: var(--gray-700);
+            line-height: 1.7;
+            margin-bottom: 16px;
+            padding-left: 20px;
+        }
+        .legal-content li {
+            margin-bottom: 8px;
+        }
+        .back-to-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 32px;
+            transition: var(--transition);
+        }
+        .back-to-home:hover {
+            color: var(--light-blue);
+            transform: translateX(-4px);
+        }
+        .last-updated {
+            text-align: center;
+            color: var(--gray-500);
+            font-style: italic;
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid var(--gray-200);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">
+                    <img src="images/reception-logo.png" alt="Reception Logo" class="logo-image">
+                    <span>Reception</span>
+                </a>
+                <div class="nav-menu">
+                    <a href="index.html#features" class="nav-link" data-i18n="nav.features">Features</a>
+                    <a href="index.html#about" class="nav-link" data-i18n="nav.about">About</a>
+                    <a href="index.html#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
+                </div>
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="ru">RU</button>
+                    </div>
+                    <button class="cta-btn" data-i18n="nav.download">Download Now</button>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- License Agreement Content -->
+    <section class="legal-page">
+        <div class="legal-container">
+            <a href="index.html" class="back-to-home">
+                <i class="fas fa-arrow-left"></i>
+                <span data-i18n="license.backToHome">Back to Home</span>
+            </a>
+            
+            <div class="legal-header">
+                <h1 class="legal-title" data-i18n="license.title">License Agreement</h1>
+                <p class="legal-subtitle" data-i18n="license.subtitle">End User License Agreement (EULA)</p>
+            </div>
+
+            <div class="legal-content">
+                <h2 data-i18n="license.section1.title">Grant of License</h2>
+                <p data-i18n="license.section1.content1">Subject to the terms and conditions of this Agreement, Reception grants you a limited, non-exclusive, non-transferable, revocable license to download, install, and use the Reception mobile application solely for your personal or internal business purposes.</p>
+                <p data-i18n="license.section1.content2">This license is granted for the term specified in your subscription or until terminated in accordance with this Agreement.</p>
+
+                <h2 data-i18n="license.section2.title">Restrictions</h2>
+                <p data-i18n="license.section2.intro">You agree that you will not, and will not permit others to:</p>
+                <ul>
+                    <li data-i18n="license.section2.item1">License, sell, rent, lease, assign, distribute, transmit, host, outsource, disclose or otherwise commercially exploit the app</li>
+                    <li data-i18n="license.section2.item2">Modify, make derivative works of, disassemble, decrypt, reverse compile or reverse engineer any part of the app</li>
+                    <li data-i18n="license.section2.item3">Remove, alter or obscure any proprietary notice (including copyright and trademark notices) on the app</li>
+                    <li data-i18n="license.section2.item4">Use the app for any illegal or unauthorized purpose or violate any local, state, national or international law</li>
+                    <li data-i18n="license.section2.item5">Copy the app except as expressly permitted in this Agreement</li>
+                </ul>
+
+                <h2 data-i18n="license.section3.title">Intellectual Property Rights</h2>
+                <p data-i18n="license.section3.content1">The Reception application, including all copyrights, patents, trademarks, trade secrets and other intellectual property rights are, and shall remain, the sole and exclusive property of Reception and its licensors.</p>
+                <p data-i18n="license.section3.content2">The structure, organization, and code of the app are valuable trade secrets and confidential information of Reception.</p>
+
+                <h2 data-i18n="license.section4.title">User Data</h2>
+                <p data-i18n="license.section4.content1">You retain all rights to your data that you input, upload, or create within the app. However, you grant Reception a license to use, store, and process this data solely for the purpose of providing the service.</p>
+                <p data-i18n="license.section4.content2">Reception will handle your data in accordance with our Privacy Policy and applicable data protection laws.</p>
+
+                <h2 data-i18n="license.section5.title">Updates and Modifications</h2>
+                <p data-i18n="license.section5.content1">Reception may provide updates, patches, or new versions of the app from time to time. These updates may be automatically downloaded and installed on your device.</p>
+                <p data-i18n="license.section5.content2">By using the app, you agree to receive such updates and acknowledge that the terms of this Agreement will apply to all updates.</p>
+
+                <h2 data-i18n="license.section6.title">Subscription and Payment</h2>
+                <p data-i18n="license.section6.content1">Certain features of the app may require a paid subscription. Payment terms and subscription details will be provided at the time of purchase.</p>
+                <p data-i18n="license.section6.content2">Subscription fees are non-refundable except as expressly stated in our refund policy or as required by applicable law.</p>
+
+                <h2 data-i18n="license.section7.title">Termination</h2>
+                <p data-i18n="license.section7.content1">This Agreement is effective until terminated. You may terminate this Agreement at any time by deleting the app and ceasing all use.</p>
+                <p data-i18n="license.section7.content2">Reception may terminate this Agreement immediately if you fail to comply with any term of this Agreement. Upon termination, you must cease all use of the app and delete all copies.</p>
+
+                <h2 data-i18n="license.section8.title">Disclaimer of Warranties</h2>
+                <p data-i18n="license.section8.content1">The app is provided "AS IS" and "AS AVAILABLE" without warranty of any kind. Reception disclaims all warranties, whether express, implied, statutory or otherwise.</p>
+                <p data-i18n="license.section8.content2">Reception does not warrant that the app will be uninterrupted, error-free, or free of viruses or other harmful components.</p>
+
+                <h2 data-i18n="license.section9.title">Limitation of Liability</h2>
+                <p data-i18n="license.section9.content">In no event shall Reception be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses.</p>
+
+                <h2 data-i18n="license.section10.title">Governing Law and Dispute Resolution</h2>
+                <p data-i18n="license.section10.content1">This Agreement shall be governed by and construed in accordance with the laws of the jurisdiction in which Reception is established.</p>
+                <p data-i18n="license.section10.content2">Any disputes arising from this Agreement shall be resolved through binding arbitration in accordance with the rules of the relevant arbitration authority.</p>
+
+                <h2 data-i18n="license.section11.title">Contact Information</h2>
+                <p data-i18n="license.section11.content">If you have any questions about this License Agreement, please contact us at legal@reception-app.com or through our app's support section.</p>
+
+                <div class="last-updated">
+                    <p data-i18n="license.lastUpdated">Last updated: January 1, 2024</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="images/reception-logo.png" alt="Reception Logo" class="footer-logo-image">
+                        <span>Reception</span>
+                    </div>
+                    <p class="footer-description" data-i18n="footer.description">Making business operations simpler and more efficient for everyone.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 data-i18n="footer.product">Product</h4>
+                        <a href="index.html#features" data-i18n="footer.features">Features</a>
+                        <a href="#" data-i18n="footer.pricing">Pricing</a>
+                        <a href="#" data-i18n="footer.updates">Updates</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4 data-i18n="footer.company">Company</h4>
+                        <a href="index.html#about" data-i18n="footer.about">About</a>
+                        <a href="#" data-i18n="footer.careers">Careers</a>
+                        <a href="index.html#contact" data-i18n="footer.contact">Contact</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4 data-i18n="footer.legal">Legal</h4>
+                        <a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a>
+                        <a href="terms-of-service.html" data-i18n="footer.terms">Terms of Service</a>
+                        <a href="license-agreement.html" data-i18n="footer.license">License Agreement</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">&copy; 2024 Reception. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Reception</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/reception-logo.png">
+    <style>
+        .legal-page {
+            padding: 120px 0 80px;
+            background: var(--gradient-primary);
+            min-height: 100vh;
+        }
+        .legal-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .legal-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .legal-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+        }
+        .legal-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+        }
+        .legal-content {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-100);
+        }
+        .legal-content h2 {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 32px 0 16px 0;
+            border-bottom: 2px solid var(--soft-blue);
+            padding-bottom: 8px;
+        }
+        .legal-content h2:first-child {
+            margin-top: 0;
+        }
+        .legal-content p {
+            color: var(--gray-700);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        .legal-content ul {
+            color: var(--gray-700);
+            line-height: 1.7;
+            margin-bottom: 16px;
+            padding-left: 20px;
+        }
+        .legal-content li {
+            margin-bottom: 8px;
+        }
+        .back-to-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 32px;
+            transition: var(--transition);
+        }
+        .back-to-home:hover {
+            color: var(--light-blue);
+            transform: translateX(-4px);
+        }
+        .last-updated {
+            text-align: center;
+            color: var(--gray-500);
+            font-style: italic;
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid var(--gray-200);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">
+                    <img src="images/reception-logo.png" alt="Reception Logo" class="logo-image">
+                    <span>Reception</span>
+                </a>
+                <div class="nav-menu">
+                    <a href="index.html#features" class="nav-link" data-i18n="nav.features">Features</a>
+                    <a href="index.html#about" class="nav-link" data-i18n="nav.about">About</a>
+                    <a href="index.html#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
+                </div>
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="ru">RU</button>
+                    </div>
+                    <button class="cta-btn" data-i18n="nav.download">Download Now</button>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Terms of Service Content -->
+    <section class="legal-page">
+        <div class="legal-container">
+            <a href="index.html" class="back-to-home">
+                <i class="fas fa-arrow-left"></i>
+                <span data-i18n="terms.backToHome">Back to Home</span>
+            </a>
+            
+            <div class="legal-header">
+                <h1 class="legal-title" data-i18n="terms.title">Terms of Service</h1>
+                <p class="legal-subtitle" data-i18n="terms.subtitle">Please read these terms carefully</p>
+            </div>
+
+            <div class="legal-content">
+                <h2 data-i18n="terms.section1.title">Acceptance of Terms</h2>
+                <p data-i18n="terms.section1.content1">By downloading, installing, or using the Reception mobile application, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our app.</p>
+                <p data-i18n="terms.section1.content2">These terms constitute a legally binding agreement between you and Reception. We reserve the right to update these terms at any time without prior notice.</p>
+
+                <h2 data-i18n="terms.section2.title">Description of Service</h2>
+                <p data-i18n="terms.section2.content1">Reception is a mobile application designed to help businesses streamline their operations and improve efficiency. Our service includes features for business management, analytics, team collaboration, and more.</p>
+                <p data-i18n="terms.section2.content2">We reserve the right to modify, suspend, or discontinue any part of our service at any time with or without notice.</p>
+
+                <h2 data-i18n="terms.section3.title">User Accounts</h2>
+                <p data-i18n="terms.section3.content1">To use certain features of our app, you may be required to create an account. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.</p>
+                <p data-i18n="terms.section3.content2">You agree to provide accurate, current, and complete information when creating your account and to update such information to keep it accurate, current, and complete.</p>
+
+                <h2 data-i18n="terms.section4.title">Acceptable Use</h2>
+                <p data-i18n="terms.section4.intro">You agree not to use our service to:</p>
+                <ul>
+                    <li data-i18n="terms.section4.item1">Violate any applicable laws or regulations</li>
+                    <li data-i18n="terms.section4.item2">Infringe upon the rights of others</li>
+                    <li data-i18n="terms.section4.item3">Transmit harmful, offensive, or inappropriate content</li>
+                    <li data-i18n="terms.section4.item4">Attempt to gain unauthorized access to our systems</li>
+                    <li data-i18n="terms.section4.item5">Interfere with the proper functioning of our service</li>
+                    <li data-i18n="terms.section4.item6">Use our service for any commercial purpose without our express consent</li>
+                </ul>
+
+                <h2 data-i18n="terms.section5.title">Intellectual Property</h2>
+                <p data-i18n="terms.section5.content1">The Reception app and all its content, features, and functionality are owned by us and are protected by international copyright, trademark, and other intellectual property laws.</p>
+                <p data-i18n="terms.section5.content2">You are granted a limited, non-exclusive, non-transferable license to use our app for your personal or business purposes in accordance with these terms.</p>
+
+                <h2 data-i18n="terms.section6.title">Privacy</h2>
+                <p data-i18n="terms.section6.content">Your privacy is important to us. Please review our Privacy Policy, which also governs your use of our service, to understand our practices.</p>
+
+                <h2 data-i18n="terms.section7.title">Disclaimers</h2>
+                <p data-i18n="terms.section7.content1">Our service is provided "as is" and "as available" without any warranties of any kind, either express or implied. We do not warrant that our service will be uninterrupted, error-free, or completely secure.</p>
+                <p data-i18n="terms.section7.content2">We are not responsible for any loss of data, business interruption, or other damages that may result from your use of our service.</p>
+
+                <h2 data-i18n="terms.section8.title">Limitation of Liability</h2>
+                <p data-i18n="terms.section8.content">To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly.</p>
+
+                <h2 data-i18n="terms.section9.title">Termination</h2>
+                <p data-i18n="terms.section9.content1">We may terminate or suspend your access to our service immediately, without prior notice, for any reason, including if you breach these terms.</p>
+                <p data-i18n="terms.section9.content2">You may stop using our service at any time. Upon termination, your right to use our service will cease immediately.</p>
+
+                <h2 data-i18n="terms.section10.title">Governing Law</h2>
+                <p data-i18n="terms.section10.content">These terms shall be governed by and construed in accordance with the laws of the jurisdiction in which our company is established, without regard to its conflict of law provisions.</p>
+
+                <h2 data-i18n="terms.section11.title">Contact Information</h2>
+                <p data-i18n="terms.section11.content">If you have any questions about these Terms of Service, please contact us at legal@reception-app.com or through our app's support section.</p>
+
+                <div class="last-updated">
+                    <p data-i18n="terms.lastUpdated">Last updated: January 1, 2024</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="images/reception-logo.png" alt="Reception Logo" class="footer-logo-image">
+                        <span>Reception</span>
+                    </div>
+                    <p class="footer-description" data-i18n="footer.description">Making business operations simpler and more efficient for everyone.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 data-i18n="footer.product">Product</h4>
+                        <a href="index.html#features" data-i18n="footer.features">Features</a>
+                        <a href="#" data-i18n="footer.pricing">Pricing</a>
+                        <a href="#" data-i18n="footer.updates">Updates</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4 data-i18n="footer.company">Company</h4>
+                        <a href="index.html#about" data-i18n="footer.about">About</a>
+                        <a href="#" data-i18n="footer.careers">Careers</a>
+                        <a href="index.html#contact" data-i18n="footer.contact">Contact</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4 data-i18n="footer.legal">Legal</h4>
+                        <a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a>
+                        <a href="terms-of-service.html" data-i18n="footer.terms">Terms of Service</a>
+                        <a href="license-agreement.html" data-i18n="footer.license">License Agreement</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">&copy; 2024 Reception. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
