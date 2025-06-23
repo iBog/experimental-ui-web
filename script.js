@@ -597,18 +597,72 @@ class ReceptionWebsite {
         modal.innerHTML = `
             <div class="modal-overlay">
                 <div class="modal-content">
-                    <h3>Download Reception</h3>
-                    <p>Get the Reception app on your mobile device:</p>
+                    <div class="modal-header">
+                        <div class="modal-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Download Reception App</h3>
+                        <p>Choose your preferred platform to download Reception App</p>
+                    </div>
+                    
                     <div class="download-buttons">
-                        <a href="https://play.google.com/store" target="_blank" class="download-btn">
-                            <i class="fab fa-google-play"></i>
-                            Google Play
+                        <!-- App Store -->
+                        <a href="#" class="store-btn app-store" onclick="alert('Reception App will be available on the App Store soon!')">
+                            <div class="store-icon">
+                                <img src="images/app-store-icon.png" alt="App Store">
+                            </div>
+                            <div class="store-info">
+                                <div class="store-subtitle">Download on the</div>
+                                <div class="store-title">App Store</div>
+                            </div>
                         </a>
-                        <a href="https://apps.apple.com/" target="_blank" class="download-btn">
-                            <i class="fab fa-apple"></i>
-                            App Store
+                        
+                        <!-- Google Play -->
+                        <a href="#" class="store-btn google-play" onclick="alert('Reception App will be available on Google Play soon!')">
+                            <div class="store-icon">
+                                <img src="images/google-play-icon.png" alt="Google Play">
+                            </div>
+                            <div class="store-info">
+                                <div class="store-subtitle">GET IT ON</div>
+                                <div class="store-title">Google Play</div>
+                            </div>
+                        </a>
+                        
+                        <!-- Huawei AppGallery -->
+                        <a href="#" class="store-btn huawei-store" onclick="alert('Reception App will be available on AppGallery soon!')">
+                            <div class="store-icon">
+                                <img src="images/huawei-appgallery-icon.png" alt="AppGallery">
+                            </div>
+                            <div class="store-info">
+                                <div class="store-subtitle">EXPLORE IT ON</div>
+                                <div class="store-title">AppGallery</div>
+                            </div>
+                        </a>
+                        
+                        <!-- RuStore -->
+                        <a href="#" class="store-btn ru-store" onclick="alert('Reception App will be available on RuStore soon!')">
+                            <div class="store-icon">
+                                <img src="images/rustore-icon.png" alt="RuStore">
+                            </div>
+                            <div class="store-info">
+                                <div class="store-title single-line">RuStore</div>
+                            </div>
+                        </a>
+                        
+                        <!-- Direct Download -->
+                        <a href="#" class="store-btn direct-download" onclick="handleDirectDownload()">
+                            <div class="store-icon direct-icon">
+                                <i class="fas fa-download"></i>
+                            </div>
+                            <div class="store-info">
+                                <div class="store-subtitle">DIRECT DOWNLOAD</div>
+                                <div class="store-title" id="direct-download-title">Download</div>
+                            </div>
                         </a>
                     </div>
+                    
+
+                    
                     <button class="close-modal">&times;</button>
                 </div>
             </div>
@@ -624,6 +678,7 @@ class ReceptionWebsite {
                 right: 0;
                 bottom: 0;
                 z-index: 2000;
+                backdrop-filter: blur(5px);
             }
             .modal-overlay {
                 background: rgba(0, 0, 0, 0.5);
@@ -636,70 +691,184 @@ class ReceptionWebsite {
             }
             .modal-content {
                 background: white;
-                padding: 40px;
-                border-radius: 16px;
+                padding: 32px;
+                border-radius: 20px;
                 text-align: center;
                 position: relative;
-                max-width: 400px;
+                max-width: 480px;
                 width: 100%;
-                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+            .modal-header {
+                margin-bottom: 32px;
+            }
+            .modal-icon {
+                width: 72px;
+                height: 72px;
+                background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+                border-radius: 18px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 20px;
+            }
+            .modal-icon i {
+                color: white;
+                font-size: 28px;
             }
             .modal-content h3 {
-                color: var(--primary-blue);
-                margin-bottom: 16px;
+                color: #1f2937;
+                margin-bottom: 8px;
                 font-size: 1.5rem;
+                font-weight: 600;
             }
             .modal-content p {
-                margin-bottom: 24px;
-                color: var(--gray-600);
+                margin-bottom: 0;
+                color: #6b7280;
+                line-height: 1.5;
             }
             .download-buttons {
                 display: flex;
-                gap: 16px;
-                justify-content: center;
-                flex-wrap: wrap;
+                flex-direction: column;
+                gap: 12px;
+                margin-bottom: 28px;
             }
-            .download-btn {
+            .store-btn {
                 display: flex;
                 align-items: center;
-                gap: 8px;
-                padding: 12px 20px;
-                background: var(--primary-blue);
-                color: white;
+                padding: 12px 16px;
                 text-decoration: none;
-                border-radius: 8px;
-                font-weight: 600;
-                transition: var(--transition);
-            }
-            .download-btn:hover {
-                background: var(--light-blue);
-                transform: translateY(-2px);
-            }
-            .close-modal {
-                position: absolute;
-                top: 16px;
-                right: 16px;
-                background: none;
-                border: none;
-                font-size: 24px;
+                border-radius: 12px;
+                transition: all 0.2s ease;
                 cursor: pointer;
-                color: var(--gray-400);
+                border: 1px solid #e5e7eb;
+            }
+            .store-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            }
+            .store-icon {
                 width: 32px;
                 height: 32px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                margin-right: 14px;
+                border-radius: 7px;
+                flex-shrink: 0;
+            }
+            .store-info {
+                text-align: left;
+                flex: 1;
+            }
+            .store-subtitle {
+                font-size: 11px;
+                line-height: 1;
+                opacity: 0.8;
+                margin-bottom: 2px;
+            }
+            .store-title {
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 1.2;
+            }
+            .store-title.single-line {
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 1.4;
+                margin-bottom: 0;
+            }
+            
+            /* All store buttons - Black background with white text */
+            .app-store,
+            .google-play,
+            .huawei-store,
+            .ru-store {
+                background: #000;
+                color: white;
+                border-color: #333;
+            }
+            
+            /* Store icons - placeholder for actual store images */
+            .store-icon img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                border-radius: 6px;
+            }
+            
+            /* Store icons using actual images */
+            .store-icon {
+                background: transparent;
+                padding: 0;
+            }
+            
+            /* Direct Download */
+            .direct-download {
+                background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+                color: white;
+                border-color: #2563eb;
+            }
+            .direct-icon {
+                background: rgba(255, 255, 255, 0.2) !important;
+                color: white;
+            }
+            .direct-icon i {
+                font-size: 14px;
+            }
+            
+
+            .close-modal {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+                color: #9ca3af;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 border-radius: 50%;
-                transition: var(--transition);
+                transition: all 0.2s ease;
             }
             .close-modal:hover {
-                background: var(--gray-100);
-                color: var(--gray-600);
+                background: #f3f4f6;
+                color: #374151;
+            }
+            
+            @media (max-width: 480px) {
+                .modal-content {
+                    padding: 24px;
+                    margin: 10px;
+                }
+                .download-buttons {
+                    gap: 10px;
+                }
+                .store-btn {
+                    padding: 10px 12px;
+                }
+                .store-icon {
+                    width: 28px;
+                    height: 28px;
+                    margin-right: 12px;
+                }
+                .store-title {
+                    font-size: 15px;
+                }
             }
         `;
         
         document.head.appendChild(style);
         document.body.appendChild(modal);
+        
+        // Update direct download button based on platform
+        this.updateDirectDownloadButton();
         
         // Close modal handlers
         const closeModal = () => {
@@ -723,11 +892,87 @@ class ReceptionWebsite {
         };
         document.addEventListener('keydown', handleEscape);
     }
+
+    detectPlatform() {
+        const userAgent = navigator.userAgent.toLowerCase();
+        const platform = navigator.platform.toLowerCase();
+        
+        if (userAgent.includes('android')) {
+            return 'android';
+        } else if (userAgent.includes('iphone') || userAgent.includes('ipad') || userAgent.includes('ipod')) {
+            return 'ios';
+        } else if (platform.includes('mac') || userAgent.includes('macintosh')) {
+            return 'macos';
+        } else if (platform.includes('win') || userAgent.includes('windows')) {
+            return 'windows';
+        } else if (platform.includes('linux') || userAgent.includes('linux')) {
+            return 'linux';
+        } else {
+            return 'unknown';
+        }
+    }
+
+    updateDirectDownloadButton() {
+        const platform = this.detectPlatform();
+        const titleElement = document.getElementById('direct-download-title');
+        
+        if (titleElement) {
+            switch (platform) {
+                case 'windows':
+                    titleElement.textContent = 'Windows EXE';
+                    break;
+                case 'macos':
+                    titleElement.textContent = 'macOS DMG';
+                    break;
+                case 'android':
+                    titleElement.textContent = 'Android APK';
+                    break;
+                case 'linux':
+                    titleElement.textContent = 'Linux AppImage';
+                    break;
+                default:
+                    titleElement.textContent = 'Download';
+            }
+        }
+    }
+
+    getDirectDownloadUrl() {
+        const platform = this.detectPlatform();
+        
+        // These URLs should be updated with actual download links when available
+        const downloadUrls = {
+            windows: 'https://github.com/experimentalui/reception-app/releases/latest/download/reception-app-windows.exe',
+            macos: 'https://github.com/experimentalui/reception-app/releases/latest/download/reception-app-macos.dmg',
+            android: 'https://github.com/experimentalui/reception-app/releases/latest/download/reception-app-android.apk',
+            linux: 'https://github.com/experimentalui/reception-app/releases/latest/download/reception-app-linux.appimage'
+        };
+        
+        return downloadUrls[platform] || '#';
+    }
+}
+
+// Global function for direct download button
+function handleDirectDownload() {
+    const website = window.receptionWebsite;
+    if (website) {
+        const platform = website.detectPlatform();
+        const downloadUrl = website.getDirectDownloadUrl();
+        
+        if (downloadUrl !== '#') {
+            // For now, show an alert with the platform and URL
+            // In production, this would initiate the actual download
+            alert(`Direct download for ${platform.charAt(0).toUpperCase() + platform.slice(1)} will be available soon!\n\nDownload URL: ${downloadUrl}`);
+            // Uncomment the line below when actual files are available:
+            // window.open(downloadUrl, '_blank');
+        } else {
+            alert('Direct download is not available for your platform yet.');
+        }
+    }
 }
 
 // Initialize the website when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new ReceptionWebsite();
+    window.receptionWebsite = new ReceptionWebsite();
 });
 
 // Add CSS for animations
