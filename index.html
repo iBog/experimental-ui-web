@@ -20,8 +20,9 @@
                 </a>
                 <div class="nav-menu">
                     <a href="#features" class="nav-link" data-i18n="nav.features">Features</a>
-                    <a href="#about" class="nav-link" data-i18n="nav.about">About</a>
                     <a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
+                    <a href="#contact" class="nav-link" data-i18n="nav.social">Social</a>
+                    <a href="#contact" class="nav-link" data-i18n="nav.legal">Legal Info</a>
                 </div>
                 <div class="nav-actions">
                     <div class="language-switcher">
@@ -42,8 +43,9 @@
                 </button>
                 <div class="mobile-menu">
                     <a href="#features" class="mobile-menu-item" data-i18n="nav.features">Features</a>
-                    <a href="#about" class="mobile-menu-item" data-i18n="nav.about">About</a>
                     <a href="mailto:support@experimentalui.com" class="mobile-menu-item" data-i18n="nav.contact">Contact</a>
+                    <a href="#contact" class="mobile-menu-item" data-i18n="nav.social">Social</a>
+                    <a href="#contact" class="mobile-menu-item" data-i18n="nav.legal">Legal Info</a>
                     <a href="#" class="mobile-menu-item download-btn" data-i18n="nav.download">Download</a>
                 </div>
             </div>
@@ -55,10 +57,24 @@
         <div class="hero-container">
             <div class="hero-content">
                 <h1 class="hero-title" data-i18n="hero.title">Reception App</h1>
-                <p class="hero-subtitle" data-i18n="hero.subtitle">Make your business easier</p>
-                <p class="hero-description" data-i18n="hero.description">Streamline your business operations with our innovative mobile solution. Experience efficiency like never before.</p>
+                <p class="hero-subtitle" data-i18n="about.subtitle">Your ultimate assistant for managing clients and appointments!</p>
+                <p class="hero-description" data-i18n="about.description">Perfect for cosmetologists, massage therapists, hairdressers, nail artists, barbershops, hotels, restaurants, doctors, dentists, and small businesses.</p>
+                
+                <div class="about-features">
+                    <h3 class="features-heading" data-i18n="about.featuresTitle">Key Features:</h3>
+                    <ul class="features-list">
+                        <li data-i18n="about.feature1">✅ Easy client database management</li>
+                        <li data-i18n="about.feature2">✅ Flexible appointment scheduling</li>
+                        <li data-i18n="about.feature3">✅ Finances: track payments, generate daily/weekly/monthly reports</li>
+                        <li data-i18n="about.feature4">✅ Progress photos & visit history</li>
+                        <li data-i18n="about.feature5">✅ Quick search across all records</li>
+                    </ul>
+                </div>
+                
+                <p class="about-cta" data-i18n="about.cta">Replace paper notebooks and sticky notes with a smart digital solution! 📱💼</p>
+                
                 <div class="hero-buttons">
-                    <button class="primary-btn" data-i18n="hero.download">Download Now</button>
+                    <button class="primary-btn" data-i18n="about.action">Download now and work with ease!</button>
                     <button class="secondary-btn" data-i18n="hero.learnMore">Learn More</button>
                 </div>
             </div>
@@ -84,85 +100,206 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title" data-i18n="features.title">Key Features</h2>
-                <p class="section-description" data-i18n="features.description">Discover what makes Reception App the perfect choice for your business</p>
+                <p class="section-description" data-i18n="features.description">Comprehensive features designed to streamline your business operations</p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
+            
+            <div class="features-categories">
+                <!-- Core Management Features -->
+                <div class="feature-category">
+                    <div class="category-header">
+                        <div class="category-icon">🏠</div>
+                        <h3 class="category-title" data-i18n="features.core.title">Core Management Features</h3>
                     </div>
-                    <h3 class="feature-title" data-i18n="features.speed.title">Lightning Fast</h3>
-                    <p class="feature-description" data-i18n="features.speed.description">Experience blazing fast performance that keeps your business moving forward without delays.</p>
+                    <div class="category-features">
+                        <div class="feature-item">
+                            <h4 data-i18n="features.core.client.title">Client Management</h4>
+                            <p data-i18n="features.core.client.description">Add, edit, search, and manage client profiles with detailed information</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.core.appointment.title">Visit/Appointment Scheduling</h4>
+                            <p data-i18n="features.core.appointment.description">Create, manage, and track appointments with pricing and procedures</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.core.calendar.title">Calendar Integration</h4>
+                            <p data-i18n="features.core.calendar.description">Visual calendar view with appointment scheduling and management</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.core.timeline.title">Timeline View</h4>
+                            <p data-i18n="features.core.timeline.description">Chronological activity feed showing all visits and client interactions</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.core.search.title">Contact Search</h4>
+                            <p data-i18n="features.core.search.description">Advanced search functionality across all clients and visits</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.core.financial.title">Financial Tracking</h4>
+                            <p data-i18n="features.core.financial.description">Revenue reports, statistics, and earnings analysis by period</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
+
+                <!-- Data Management & Storage -->
+                <div class="feature-category">
+                    <div class="category-header">
+                        <div class="category-icon">💾</div>
+                        <h3 class="category-title" data-i18n="features.data.title">Data Management & Storage</h3>
                     </div>
-                    <h3 class="feature-title" data-i18n="features.security.title">Secure & Reliable</h3>
-                    <p class="feature-description" data-i18n="features.security.description">Your data is protected with enterprise-grade security and reliability you can trust.</p>
+                    <div class="category-features">
+                        <div class="feature-item">
+                            <h4 data-i18n="features.data.sqlite.title">SQLite Database</h4>
+                            <p data-i18n="features.data.sqlite.description">Local data storage with full CRUD operations</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.data.backup.title">Data Import/Export</h4>
+                            <p data-i18n="features.data.backup.description">Backup and restore functionality with ZIP file support</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.data.csv.title">CSV Export</h4>
+                            <p data-i18n="features.data.csv.description">Export client, visit, and financial data to CSV format</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.data.legacy.title">Legacy Import Support</h4>
+                            <p data-i18n="features.data.legacy.description">Import data from older backup formats</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.data.inventory.title">Inventory Management</h4>
+                            <p data-i18n="features.data.inventory.description">Track storage items, quantities, expiration dates, and locations</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.data.files.title">File Management</h4>
+                            <p data-i18n="features.data.files.description">Attach and organize files to clients and visits</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
+
+                <!-- Media & Documentation -->
+                <div class="feature-category">
+                    <div class="category-header">
+                        <div class="category-icon">📸</div>
+                        <h3 class="category-title" data-i18n="features.media.title">Media & Documentation</h3>
                     </div>
-                    <h3 class="feature-title" data-i18n="features.collaboration.title">Team Collaboration</h3>
-                    <p class="feature-description" data-i18n="features.collaboration.description">Seamlessly collaborate with your team members and boost productivity.</p>
+                    <div class="category-features">
+                        <div class="feature-item">
+                            <h4 data-i18n="features.media.gallery.title">Photo Gallery</h4>
+                            <p data-i18n="features.media.gallery.description">Camera integration for visit photos with full-screen viewing</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.media.attachments.title">File Attachments</h4>
+                            <p data-i18n="features.media.attachments.description">Attach documents, images, and files to client records</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.media.thumbnails.title">Photo Thumbnails</h4>
+                            <p data-i18n="features.media.thumbnails.description">Grid view of photos with quick access</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.media.viewer.title">Image Gallery</h4>
+                            <p data-i18n="features.media.viewer.description">Full-screen photo viewer with navigation</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.media.qr.title">QR Code Scanner</h4>
+                            <p data-i18n="features.media.qr.description">Built-in QR/barcode scanner for quick data entry</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
+
+                <!-- User Interface & Experience -->
+                <div class="feature-category">
+                    <div class="category-header">
+                        <div class="category-icon">🎨</div>
+                        <h3 class="category-title" data-i18n="features.ui.title">User Interface & Experience</h3>
                     </div>
-                    <h3 class="feature-title" data-i18n="features.analytics.title">Smart Analytics</h3>
-                    <p class="feature-description" data-i18n="features.analytics.description">Get valuable insights with comprehensive analytics and reporting tools.</p>
+                    <div class="category-features">
+                        <div class="feature-item">
+                            <h4 data-i18n="features.ui.material.title">Material 3 Design</h4>
+                            <p data-i18n="features.ui.material.description">Modern, clean interface following Google's design standards</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.ui.theme.title">Light/Dark Theme</h4>
+                            <p data-i18n="features.ui.theme.description">Complete theming system with custom brand colors</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.ui.multilang.title">Multi-language Support</h4>
+                            <p data-i18n="features.ui.multilang.description">Internationalization with English and Russian languages</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.ui.responsive.title">Responsive Layout</h4>
+                            <p data-i18n="features.ui.responsive.description">Adapts to different screen sizes and orientations</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.ui.speeddial.title">Speed Dial Actions</h4>
+                            <p data-i18n="features.ui.speeddial.description">Quick floating action buttons for common tasks</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.ui.tables.title">Smart Data Tables</h4>
+                            <p data-i18n="features.ui.tables.description">Sortable, filterable tables with customizable columns</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
+
+                <!-- Analytics & Reporting -->
+                <div class="feature-category">
+                    <div class="category-header">
+                        <div class="category-icon">📊</div>
+                        <h3 class="category-title" data-i18n="features.analytics.title">Analytics & Reporting</h3>
                     </div>
-                    <h3 class="feature-title" data-i18n="features.mobile.title">Mobile First</h3>
-                    <p class="feature-description" data-i18n="features.mobile.description">Designed for mobile with responsive interface that works everywhere.</p>
+                    <div class="category-features">
+                        <div class="feature-item">
+                            <h4 data-i18n="features.analytics.financial.title">Financial Reports</h4>
+                            <p data-i18n="features.analytics.financial.description">Revenue tracking by week, month, quarter, or year</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.analytics.clients.title">Client Statistics</h4>
+                            <p data-i18n="features.analytics.clients.description">New client acquisition tracking</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.analytics.procedures.title">Procedure Analytics</h4>
+                            <p data-i18n="features.analytics.procedures.description">Popular services and revenue by treatment type</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.analytics.trends.title">Visit Trends</h4>
+                            <p data-i18n="features.analytics.trends.description">Appointment patterns and frequency analysis</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.analytics.export.title">Export Reports</h4>
+                            <p data-i18n="features.analytics.export.description">Generate and export financial and activity reports</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-cog"></i>
+
+                <!-- Security & Cross-Platform -->
+                <div class="feature-category">
+                    <div class="category-header">
+                        <div class="category-icon">🔒</div>
+                        <h3 class="category-title" data-i18n="features.security.title">Security & Cross-Platform</h3>
                     </div>
-                    <h3 class="feature-title" data-i18n="features.customization.title">Customizable</h3>
-                    <p class="feature-description" data-i18n="features.customization.description">Tailor the app to your specific business needs with flexible customization options.</p>
+                    <div class="category-features">
+                        <div class="feature-item">
+                            <h4 data-i18n="features.security.activation.title">Device Activation</h4>
+                            <p data-i18n="features.security.activation.description">Secure app activation with unique device codes</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.security.trial.title">Trial Period Management</h4>
+                            <p data-i18n="features.security.trial.description">30-day trial with expiration tracking</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.security.storage.title">Secure Storage</h4>
+                            <p data-i18n="features.security.storage.description">Encrypted storage for sensitive data using Flutter Secure Storage</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.security.crossplatform.title">Cross-Platform Support</h4>
+                            <p data-i18n="features.security.crossplatform.description">Android, Windows, macOS, and Linux compatibility</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4 data-i18n="features.security.mobile.title">Mobile Optimization</h4>
+                            <p data-i18n="features.security.mobile.description">Camera integration, gallery access, and touch optimization</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 class="section-title" data-i18n="about.title">About Reception App</h2>
-                    <p class="about-description" data-i18n="about.description">Reception App is designed to revolutionize how businesses manage their daily operations. Our intuitive mobile app combines powerful features with elegant design to deliver an exceptional user experience.</p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <div class="stat-number">50K+</div>
-                            <div class="stat-label" data-i18n="about.users">Active Users</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">99.9%</div>
-                            <div class="stat-label" data-i18n="about.uptime">Uptime</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label" data-i18n="about.support">Support</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <div class="image-placeholder">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Footer -->
     <footer class="footer" id="contact">
