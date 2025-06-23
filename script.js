@@ -516,8 +516,8 @@ const translations = {
 
 class ReceptionWebsite {
     constructor() {
-        this.currentLanguage = localStorage.getItem('language') || 'en';
-        this.currentTheme = localStorage.getItem('theme') || 'light';
+        this.currentLanguage = 'en';
+        this.currentTheme = 'light';
         this.isMobileMenuOpen = false;
         this.init();
     }
@@ -714,21 +714,12 @@ class ReceptionWebsite {
     handleScroll() {
         const header = document.querySelector('.header');
         const scrollY = window.scrollY;
-        const isDark = this.currentTheme === 'dark';
         
         if (scrollY > 50) {
-            if (isDark) {
-                header.style.background = 'rgba(15, 23, 42, 0.98)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-            }
+            header.classList.add('scrolled');
             header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
         } else {
-            if (isDark) {
-                header.style.background = 'rgba(15, 23, 42, 0.95)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-            }
+            header.classList.remove('scrolled');
             header.style.boxShadow = '';
         }
     }
