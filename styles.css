@@ -329,8 +329,8 @@ body {
 /* Hero Section */
 .hero {
     background: var(--gradient-hero);
-    padding: 120px 0 80px;
-    min-height: 100vh;
+    padding: 100px 0 60px;
+    min-height: calc(100vh - 70px);
     display: flex;
     align-items: center;
     position: relative;
@@ -353,8 +353,8 @@ body {
     margin: 0 auto;
     padding: 0 20px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
     align-items: center;
     position: relative;
     z-index: 1;
@@ -373,10 +373,11 @@ body {
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
-    color: var(--gray-600);
+    font-size: 2.5rem;
+    color: var(--primary-blue);
     margin-bottom: 24px;
-    font-weight: 400;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
 .hero-description {
@@ -564,7 +565,7 @@ body {
 
 /* Features Section */
 .features {
-    padding: 100px 0;
+    padding: 40px 0 40px;
     background: var(--white);
 }
 
@@ -893,12 +894,12 @@ body {
     
     .hero-container {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 30px;
         text-align: center;
     }
     
-    .hero-title {
-        font-size: 2.5rem;
+    .hero-subtitle {
+        font-size: 2rem;
     }
     
     .hero-buttons {
@@ -959,11 +960,11 @@ body {
 
 @media (max-width: 480px) {
     .hero {
-        padding: 100px 0 60px;
+        padding: 40px 0 40px;
     }
     
-    .hero-title {
-        font-size: 2rem;
+    .hero-subtitle {
+        font-size: 1.75rem;
     }
     
 
