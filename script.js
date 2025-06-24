@@ -630,11 +630,11 @@ const newsData = [
 
 class ReceptionWebsite {
     constructor() {
-        this.currentLanguage = 'en';
+        this.currentLanguage = 'ru';
         this.currentTheme = 'light';
         this.isMobileMenuOpen = false;
         this.currentSlide = 0;
-        this.slidesPerView = 3;
+        this.maxVisibleCards = 4;
         this.totalSlides = 0;
         this.init();
     }
@@ -809,7 +809,6 @@ class ReceptionWebsite {
         
         // Re-render news to update translations
         this.renderNews();
-        this.updateCarousel();
     }
 
     renderNews() {
@@ -825,30 +824,31 @@ class ReceptionWebsite {
         // Get current language translations
         const langData = translations[this.currentLanguage] || translations.en;
         
-        // Add empty placeholder card at the beginning
-        const emptyCard = this.createEmptyCard();
-        newsContainer.appendChild(emptyCard);
-        
-        // Render each news item
+        // Render each news item (no empty card)
         sortedNews.forEach((newsItem, index) => {
-            const newsCard = this.createNewsCard(newsItem, langData, index + 1);
+            const newsCard = this.createNewsCard(newsItem, langData, index);
             newsContainer.appendChild(newsCard);
         });
         
-        this.totalSlides = sortedNews.length + 1; // +1 for empty card
-        this.currentSlide = 1; // Start at position 1 to center the first news item
-        this.updateCarouselIndicators();
+        this.totalSlides = sortedNews.length;
+        this.currentSlide = 0; // Start at position 0 to show latest news first
+        
+        // Apply stacked positioning immediately after DOM update
+        setTimeout(() => {
+            this.updateStackedCards();
+        }, 10);
     }
 
     createNewsCard(newsItem, langData, index) {
         const article = document.createElement('article');
         article.className = 'news-card';
-        article.style.animationDelay = `${index * 0.1}s`;
         
         const dateObj = new Date(newsItem.date);
-        const day = dateObj.getDate().toString().padStart(2, '0');
-        const month = dateObj.toLocaleDateString(this.currentLanguage === 'ru' ? 'ru-RU' : 'en-US', { month: 'short' });
-        const year = dateObj.getFullYear();
+        const fullDate = dateObj.toLocaleDateString(this.currentLanguage === 'ru' ? 'ru-RU' : 'en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
         
         const title = langData[newsItem.titleKey] || newsItem.titleKey;
         const content = langData[newsItem.contentKey] || newsItem.contentKey;
@@ -856,29 +856,27 @@ class ReceptionWebsite {
         article.innerHTML = `
             <div class="news-card-content">
                 <div class="news-card-header">
+                    <h3 class="news-card-title">${title}</h3>
                     <div class="news-date-badge">
-                        <span class="news-day">${day}</span>
-                        <span class="news-month">${month}</span>
-                        <span class="news-year">${year}</span>
+                        ${fullDate}
                     </div>
                 </div>
-                <div class="news-card-main">
-                    <div class="news-card-left">
-                        <div class="news-card-body">
-                            <h3 class="news-card-title">${title}</h3>
+                <div class="news-card-body">
+                    <div class="news-card-main">
+                        <div class="news-card-left">
                             <p class="news-card-text">${content}</p>
                             <div class="news-card-tags">
                                 ${newsItem.tags.map(tagKey => `<span class="news-tag">${langData[tagKey] || tagKey}</span>`).join('')}
                             </div>
                         </div>
-                    </div>
-                    ${newsItem.image ? `
-                        <div class="news-card-right">
-                            <div class="news-image" data-image="${newsItem.image}" data-title="${title}">
-                                <img src="${newsItem.image}" alt="${title}" />
+                        ${newsItem.image ? `
+                            <div class="news-card-right">
+                                <div class="news-image" data-image="${newsItem.image}" data-title="${title}">
+                                    <img src="${newsItem.image}" alt="${title}" />
+                                </div>
                             </div>
-                        </div>
-                    ` : ''}
+                        ` : ''}
+                    </div>
                 </div>
             </div>
         `;
@@ -886,23 +884,7 @@ class ReceptionWebsite {
         return article;
     }
 
-    createEmptyCard() {
-        const article = document.createElement('article');
-        article.className = 'news-card news-card-empty';
-        article.style.animationDelay = '0s';
-        
-        article.innerHTML = `
-            <div class="news-card-content">
-                <div class="news-card-empty-content">
-                    <div class="empty-card-icon">📰</div>
-                    <h3 class="empty-card-title" data-i18n="news.empty.title">Latest News</h3>
-                    <p class="empty-card-text" data-i18n="news.empty.description">Stay tuned for the latest updates and announcements</p>
-                </div>
-            </div>
-        `;
-        
-        return article;
-    }
+
 
     setupCarousel() {
         const prevBtn = document.getElementById('prevBtn');
@@ -925,43 +907,66 @@ class ReceptionWebsite {
     }
 
     handleCarouselResize() {
-        const width = window.innerWidth;
-        if (width <= 768) {
-            this.slidesPerView = 1;
-        } else if (width <= 1024) {
-            this.slidesPerView = 2;
-        } else {
-            this.slidesPerView = 3;
-        }
-        this.updateCarousel();
+        // No need to change visible cards for stacked layout
+        this.updateStackedCards();
     }
 
     prevSlide() {
         if (this.currentSlide > 0) {
             this.currentSlide--;
-            this.updateCarousel();
+            this.updateStackedCards(true);
         }
     }
 
     nextSlide() {
-        const maxSlide = Math.max(0, this.totalSlides - this.slidesPerView);
-        if (this.currentSlide < maxSlide) {
+        if (this.currentSlide < this.totalSlides - 1) {
             this.currentSlide++;
-            this.updateCarousel();
+            this.updateStackedCards(true);
         }
     }
 
-    updateCarousel() {
-        const newsGrid = document.querySelector('.news-grid');
+    updateStackedCards(animated = false) {
+        const newsCards = document.querySelectorAll('.news-card');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         
-        if (!newsGrid) return;
+        if (!newsCards.length) return;
         
-        const slideWidth = 100 / this.slidesPerView;
-        const translateX = -this.currentSlide * slideWidth;
+        if (animated) {
+            // Add transition animation class
+            newsCards.forEach(card => {
+                card.classList.add('transitioning');
+            });
+            
+            // Remove transition class after animation
+            setTimeout(() => {
+                newsCards.forEach(card => {
+                    card.classList.remove('transitioning');
+                });
+            }, 400);
+        }
         
-        newsGrid.style.transform = `translateX(${translateX}%)`;
+        // Remove all position classes
+        newsCards.forEach(card => {
+            card.classList.remove('card-0', 'card-1', 'card-2', 'card-3', 'card-hidden');
+        });
+        
+        // Apply stacking positions based on current slide
+        newsCards.forEach((card, index) => {
+            const position = index - this.currentSlide;
+            
+            if (position === 0) {
+                card.classList.add('card-0');
+            } else if (position === 1) {
+                card.classList.add('card-1');
+            } else if (position === 2) {
+                card.classList.add('card-2');
+            } else if (position === 3) {
+                card.classList.add('card-3');
+            } else {
+                card.classList.add('card-hidden');
+            }
+        });
         
         // Update button states
         if (prevBtn) {
@@ -969,8 +974,7 @@ class ReceptionWebsite {
         }
         
         if (nextBtn) {
-            const maxSlide = Math.max(0, this.totalSlides - this.slidesPerView);
-            nextBtn.disabled = this.currentSlide >= maxSlide;
+            nextBtn.disabled = this.currentSlide >= this.totalSlides - 1;
         }
         
         this.updateCarouselIndicators();
@@ -980,17 +984,14 @@ class ReceptionWebsite {
         const indicatorsContainer = document.getElementById('carouselIndicators');
         if (!indicatorsContainer) return;
         
-        const maxSlide = Math.max(0, this.totalSlides - this.slidesPerView);
-        const dotsCount = maxSlide + 1;
-        
         indicatorsContainer.innerHTML = '';
         
-        for (let i = 0; i < dotsCount; i++) {
+        for (let i = 0; i < this.totalSlides; i++) {
             const dot = document.createElement('div');
             dot.className = `carousel-dot ${i === this.currentSlide ? 'active' : ''}`;
             dot.addEventListener('click', () => {
                 this.currentSlide = i;
-                this.updateCarousel();
+                this.updateStackedCards(true);
             });
             indicatorsContainer.appendChild(dot);
         }
