@@ -1806,6 +1806,155 @@ body {
     backdrop-filter: blur(5px);
 }
 
+/* Feedback Modal Styles */
+.feedback-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+    display: none;
+}
+
+.feedback-modal.active {
+    display: block;
+}
+
+.feedback-modal-content {
+    max-width: 480px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 24px;
+}
+
+.feedback-modal .modal-header {
+    margin-bottom: 20px;
+}
+
+.feedback-modal .modal-header h3 {
+    margin-bottom: 8px;
+    font-size: 1.3rem;
+}
+
+.feedback-modal .modal-header p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+.feedback-form {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--gray-800);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-family: inherit;
+    background: var(--white);
+    color: var(--gray-800);
+    transition: var(--transition);
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-group textarea {
+    min-height: 100px;
+    font-family: inherit;
+    line-height: 1.5;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--gray-200);
+}
+
+.form-actions .secondary-btn,
+.form-actions .primary-btn,
+.feedback-submit-btn {
+    min-width: 100px;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+}
+
+.feedback-submit-btn {
+    background: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius-lg);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.feedback-submit-btn:hover {
+    background: var(--light-blue);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Dark theme styles for feedback modal */
+[data-theme="dark"] .feedback-modal .modal-content {
+    background: var(--white);
+    border-color: var(--gray-200);
+}
+
+[data-theme="dark"] .form-group label {
+    color: var(--gray-800);
+}
+
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group textarea {
+    background: var(--gray-50);
+    border-color: var(--gray-200);
+    color: var(--gray-800);
+}
+
+[data-theme="dark"] .form-group input:focus,
+[data-theme="dark"] .form-group textarea:focus {
+    border-color: var(--primary-blue);
+    background: var(--white);
+}
+
+[data-theme="dark"] .form-actions {
+    border-top-color: var(--gray-200);
+}
+
+[data-theme="dark"] .feedback-submit-btn {
+    background: var(--primary-blue);
+    color: var(--white);
+}
+
+[data-theme="dark"] .feedback-submit-btn:hover {
+    background: var(--light-blue);
+}
+
 .modal-overlay {
     background: rgba(0, 0, 0, 0.5);
     width: 100%;
@@ -2135,6 +2284,50 @@ body {
         width: 28px;
         height: 28px;
         margin-right: 12px;
+    }
+    
+    /* Feedback modal mobile styles */
+    .feedback-modal-content {
+        max-width: 95%;
+        margin: 20px auto;
+        padding: 16px;
+        max-height: 90vh;
+    }
+    
+    .feedback-modal .modal-header {
+        margin-bottom: 16px;
+    }
+    
+    .feedback-modal .modal-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .form-group {
+        margin-bottom: 14px;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 10px 12px;
+        font-size: 0.95rem;
+    }
+    
+    .form-group textarea {
+        min-height: 80px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 16px;
+        padding-top: 12px;
+    }
+    
+    .form-actions .secondary-btn,
+    .form-actions .primary-btn,
+    .feedback-submit-btn {
+        width: 100%;
+        min-width: auto;
     }
 }
 

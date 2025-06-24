@@ -118,11 +118,20 @@ const translations = {
         "footer.about": "About",
         "footer.careers": "Careers",
         "footer.contact": "Contact",
+        "footer.feedback": "Feedback",
         "footer.legal": "Legal",
         "footer.privacy": "Privacy Policy",
         "footer.terms": "Terms of Service",
         "footer.license": "License Agreement",
         "footer.copyright": "© 2025 ExperimentalUI. All rights reserved.",
+        // Feedback form translations
+        "feedback.title": "Send us your feedback",
+        "feedback.description": "We'd love to hear from you! Your feedback helps us improve.",
+        "feedback.name": "Name:",
+        "feedback.email": "Email:",
+        "feedback.message": "Message:",
+        "feedback.cancel": "Cancel",
+        "feedback.submit": "Submit",
         // Privacy Policy translations
         "privacy.backToHome": "Back to Home",
         "privacy.title": "Privacy Policy",
@@ -424,6 +433,7 @@ const translations = {
         "footer.about": "О нас",
         "footer.careers": "Карьера",
         "footer.contact": "Контакты",
+        "footer.feedback": "Обратная связь",
         "footer.legal": "Правовая информация",
         "footer.privacy": "Политика конфиденциальности",
         "footer.terms": "Условия использования",
@@ -563,6 +573,15 @@ const translations = {
         "license.section11.title": "Контактная информация",
         "license.section11.content": "Если у вас есть вопросы об этом Лицензионном соглашении, пожалуйста, свяжитесь с нами по адресу legal@reception-app.com или через раздел поддержки нашего приложения.",
         "license.lastUpdated": "Последнее обновление: 1 января 2024 г.",
+        
+        // Feedback form translations - Russian
+        "feedback.title": "Отправьте нам отзыв",
+        "feedback.description": "Мы будем рады услышать от вас! Ваши отзывы помогают нам улучшаться.",
+        "feedback.name": "Имя:",
+        "feedback.email": "Email:",
+        "feedback.message": "Сообщение:",
+        "feedback.cancel": "Отмена",
+        "feedback.submit": "Отправить",
         
         // News section translations - Russian
         "news.title": "Последние новости",
@@ -764,11 +783,23 @@ class ReceptionWebsite {
             });
         });
 
-        // CTA button clicks
-        document.querySelectorAll('.cta-btn, .primary-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                this.handleDownloadClick();
+        // Feedback modal
+        const feedbackLink = document.getElementById('feedback-link');
+        if (feedbackLink) {
+            feedbackLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.showFeedbackModal();
             });
+        }
+
+        // CTA button clicks (exclude feedback submit button)
+        document.querySelectorAll('.cta-btn, .primary-btn').forEach(btn => {
+            // Skip feedback submit button
+            if (!btn.classList.contains('feedback-submit-btn')) {
+                btn.addEventListener('click', () => {
+                    this.handleDownloadClick();
+                });
+            }
         });
 
         // Learn More button click
@@ -1423,6 +1454,63 @@ class ReceptionWebsite {
         };
         
         return downloadUrls[platform] || '#';
+    }
+
+    showFeedbackModal() {
+        const modal = document.getElementById('feedbackModal');
+        if (!modal) return;
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        // Setup modal close handlers
+        const closeModal = () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            // Reset form
+            const form = modal.querySelector('.feedback-form');
+            if (form) {
+                form.reset();
+            }
+        };
+
+        // Close button
+        const closeBtn = document.getElementById('feedbackModalClose');
+        if (closeBtn) {
+            closeBtn.onclick = closeModal;
+        }
+
+        // Cancel button
+        const cancelBtn = document.getElementById('cancelFeedback');
+        if (cancelBtn) {
+            cancelBtn.onclick = closeModal;
+        }
+
+        // Click outside modal
+        modal.onclick = (e) => {
+            if (e.target === modal || e.target.classList.contains('modal-overlay')) {
+                closeModal();
+            }
+        };
+
+        // Escape key
+        const handleEscape = (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+                document.removeEventListener('keydown', handleEscape);
+            }
+        };
+        document.addEventListener('keydown', handleEscape);
+
+        // Form submission
+        const form = modal.querySelector('.feedback-form');
+        if (form) {
+            form.onsubmit = (e) => {
+                // Let the form submit naturally to FabForm
+                setTimeout(closeModal, 1000); // Close modal after brief delay
+            };
+        }
     }
 }
 
