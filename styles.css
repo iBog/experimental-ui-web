@@ -624,7 +624,6 @@ body {
 
 .category-icon {
     font-size: 2rem;
-    filter: grayscale(100%) brightness(0) invert(1);
 }
 
 .category-title {
@@ -668,8 +667,6 @@ body {
     line-height: 1.6;
     margin: 0;
 }
-
-
 
 /* Footer */
 .footer {
@@ -848,8 +845,37 @@ body {
 .mobile-menu-actions {
     padding: 16px 20px;
     border-top: 1px solid var(--gray-200);
+    border-bottom: 1px solid var(--gray-200);
     display: flex;
     justify-content: center;
+}
+
+.mobile-theme-switcher {
+    display: flex;
+    align-items: center;
+}
+
+.mobile-theme-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: var(--gray-100);
+    border: none;
+    border-radius: var(--border-radius);
+    color: var(--gray-700);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.mobile-theme-btn:hover {
+    background: var(--gray-200);
+    color: var(--primary-blue);
+}
+
+.mobile-theme-btn i {
+    font-size: 16px;
 }
 
 [data-theme="dark"] .mobile-menu {
@@ -869,6 +895,17 @@ body {
 
 [data-theme="dark"] .mobile-menu-actions {
     border-top-color: var(--gray-200);
+    border-bottom-color: var(--gray-200);
+}
+
+[data-theme="dark"] .mobile-theme-btn {
+    background: var(--gray-200);
+    color: var(--gray-800);
+}
+
+[data-theme="dark"] .mobile-theme-btn:hover {
+    background: var(--gray-100);
+    color: var(--primary-blue);
 }
 
 /* Responsive Design */
@@ -889,8 +926,6 @@ body {
     .nav-actions .language-switcher {
         display: flex;
     }
-    
-
     
     .hero-container {
         grid-template-columns: 1fr;
@@ -967,10 +1002,285 @@ body {
         font-size: 1.75rem;
     }
     
-
-    
     .category-features {
         grid-template-columns: 1fr;
         padding: 16px;
+    }
+}
+
+/* Download Modal Styles */
+.download-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: var(--white);
+    padding: 32px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    max-width: 480px;
+    width: 100%;
+    box-shadow: var(--shadow-xl);
+    max-height: 80vh;
+    overflow-y: auto;
+    border: 1px solid var(--gray-200);
+}
+
+.modal-header {
+    margin-bottom: 32px;
+}
+
+.modal-icon {
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.modal-icon i {
+    color: white;
+    font-size: 28px;
+}
+
+.modal-content h3 {
+    color: var(--gray-900);
+    margin-bottom: 8px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.modal-content p {
+    margin-bottom: 0;
+    color: var(--gray-600);
+    line-height: 1.5;
+}
+
+.download-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.store-btn {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: var(--transition);
+    cursor: pointer;
+    border: 1px solid var(--gray-200);
+    background: var(--gray-50);
+}
+
+.store-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    background: var(--gray-100);
+}
+
+.store-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 14px;
+    border-radius: 7px;
+    flex-shrink: 0;
+    background: transparent;
+    padding: 0;
+}
+
+.store-info {
+    text-align: left;
+    flex: 1;
+}
+
+.store-subtitle {
+    font-size: 11px;
+    line-height: 1;
+    opacity: 0.8;
+    margin-bottom: 2px;
+    color: var(--gray-600);
+}
+
+.store-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--gray-900);
+}
+
+.store-title.single-line {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0;
+    color: var(--gray-900);
+}
+
+/* Store icons */
+.store-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+/* Store buttons - Consistent black for both themes */
+.app-store,
+.google-play,
+.huawei-store,
+.ru-store {
+    background: #000000 !important;
+    color: white !important;
+    border-color: #333333 !important;
+}
+
+.app-store:hover,
+.google-play:hover,
+.huawei-store:hover,
+.ru-store:hover {
+    background: #333333 !important;
+}
+
+.app-store .store-subtitle,
+.google-play .store-subtitle,
+.huawei-store .store-subtitle,
+.ru-store .store-subtitle,
+.app-store .store-title,
+.google-play .store-title,
+.huawei-store .store-title,
+.ru-store .store-title {
+    color: white !important;
+}
+
+/* Direct Download - Consistent dark blue for both themes */
+.direct-download {
+    background: #1e40af !important;
+    color: white !important;
+    border-color: #1d4ed8 !important;
+}
+
+.direct-download:hover {
+    background: #1d4ed8 !important;
+}
+
+.direct-download .store-subtitle,
+.direct-download .store-title {
+    color: white !important;
+}
+
+.direct-icon {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: white;
+}
+
+.direct-icon i {
+    font-size: 14px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--gray-400);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.close-modal:hover {
+    background: var(--gray-100);
+    color: var(--gray-600);
+}
+
+/* Dark theme styles for modal */
+[data-theme="dark"] .modal-overlay {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="dark"] .modal-content {
+    background: var(--white);
+    border-color: var(--gray-200);
+}
+
+[data-theme="dark"] .store-btn {
+    background: var(--gray-200) !important;
+    border-color: var(--gray-100) !important;
+    color: var(--gray-800) !important;
+}
+
+[data-theme="dark"] .store-btn:hover {
+    background: var(--gray-100) !important;
+}
+
+/* Removed dark theme overrides - using consistent colors for both themes */
+
+[data-theme="dark"] .close-modal:hover {
+    background: var(--gray-200);
+}
+
+/* Responsive modal */
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 24px;
+        border-radius: 16px;
+        margin: 16px;
+    }
+    
+    .modal-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 16px;
+    }
+    
+    .modal-icon i {
+        font-size: 24px;
+    }
+    
+    .modal-content h3 {
+        font-size: 1.25rem;
+    }
+    
+    .store-btn {
+        padding: 10px 12px;
+    }
+    
+    .store-icon {
+        width: 28px;
+        height: 28px;
+        margin-right: 12px;
     }
 } 

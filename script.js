@@ -5,6 +5,7 @@ const translations = {
         "nav.about": "About",
         "nav.contact": "Contact",
         "nav.download": "Download Now",
+        "nav.theme": "Theme",
         "hero.title": "Reception App",
         "hero.subtitle": "Make your business easier",
         "hero.description": "Streamline your business operations with our innovative mobile solution. Experience efficiency like never before.",
@@ -261,6 +262,7 @@ const translations = {
         "nav.about": "О нас",
         "nav.contact": "Контакты",
         "nav.download": "Скачать",
+        "nav.theme": "Тема",
         "hero.title": "Reception App",
         "hero.subtitle": "Упростите ваш бизнес",
         "hero.description": "Оптимизируйте бизнес-процессы с помощью нашего инновационного мобильного решения. Испытайте эффективность как никогда раньше.",
@@ -549,6 +551,14 @@ class ReceptionWebsite {
             });
         }
 
+        // Mobile theme switcher
+        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+        if (mobileThemeToggle) {
+            mobileThemeToggle.addEventListener('click', () => {
+                this.toggleTheme();
+            });
+        }
+
         // Mobile menu toggle
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
         if (mobileMenuToggle) {
@@ -607,6 +617,22 @@ class ReceptionWebsite {
         document.querySelectorAll('.cta-btn, .primary-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 this.handleDownloadClick();
+            });
+        });
+
+        // Learn More button click
+        document.querySelectorAll('.secondary-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const featuresSection = document.getElementById('features');
+                if (featuresSection) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = featuresSection.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
 
@@ -683,11 +709,21 @@ class ReceptionWebsite {
 
     updateThemeButton() {
         const themeIcon = document.getElementById('theme-icon');
+        const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+        
         if (themeIcon) {
             if (this.currentTheme === 'dark') {
                 themeIcon.className = 'fas fa-moon';
             } else {
                 themeIcon.className = 'fas fa-sun';
+            }
+        }
+        
+        if (mobileThemeIcon) {
+            if (this.currentTheme === 'dark') {
+                mobileThemeIcon.className = 'fas fa-moon';
+            } else {
+                mobileThemeIcon.className = 'fas fa-sun';
             }
         }
     }
@@ -864,203 +900,7 @@ class ReceptionWebsite {
             </div>
         `;
         
-        // Add modal styles
-        const style = document.createElement('style');
-        style.textContent = `
-            .download-modal {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                z-index: 2000;
-                backdrop-filter: blur(5px);
-            }
-            .modal-overlay {
-                background: rgba(0, 0, 0, 0.5);
-                width: 100%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 20px;
-            }
-            .modal-content {
-                background: white;
-                padding: 32px;
-                border-radius: 20px;
-                text-align: center;
-                position: relative;
-                max-width: 480px;
-                width: 100%;
-                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
-                max-height: 80vh;
-                overflow-y: auto;
-            }
-            .modal-header {
-                margin-bottom: 32px;
-            }
-            .modal-icon {
-                width: 72px;
-                height: 72px;
-                background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
-                border-radius: 18px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin: 0 auto 20px;
-            }
-            .modal-icon i {
-                color: white;
-                font-size: 28px;
-            }
-            .modal-content h3 {
-                color: #1f2937;
-                margin-bottom: 8px;
-                font-size: 1.5rem;
-                font-weight: 600;
-            }
-            .modal-content p {
-                margin-bottom: 0;
-                color: #6b7280;
-                line-height: 1.5;
-            }
-            .download-buttons {
-                display: flex;
-                flex-direction: column;
-                gap: 12px;
-                margin-bottom: 28px;
-            }
-            .store-btn {
-                display: flex;
-                align-items: center;
-                padding: 12px 16px;
-                text-decoration: none;
-                border-radius: 12px;
-                transition: all 0.2s ease;
-                cursor: pointer;
-                border: 1px solid #e5e7eb;
-            }
-            .store-btn:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            }
-            .store-icon {
-                width: 32px;
-                height: 32px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-right: 14px;
-                border-radius: 7px;
-                flex-shrink: 0;
-            }
-            .store-info {
-                text-align: left;
-                flex: 1;
-            }
-            .store-subtitle {
-                font-size: 11px;
-                line-height: 1;
-                opacity: 0.8;
-                margin-bottom: 2px;
-            }
-            .store-title {
-                font-size: 16px;
-                font-weight: 600;
-                line-height: 1.2;
-            }
-            .store-title.single-line {
-                font-size: 16px;
-                font-weight: 600;
-                line-height: 1.4;
-                margin-bottom: 0;
-            }
-            
-            /* All store buttons - Black background with white text */
-            .app-store,
-            .google-play,
-            .huawei-store,
-            .ru-store {
-                background: #000;
-                color: white;
-                border-color: #333;
-            }
-            
-            /* Store icons - placeholder for actual store images */
-            .store-icon img {
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-                border-radius: 6px;
-            }
-            
-            /* Store icons using actual images */
-            .store-icon {
-                background: transparent;
-                padding: 0;
-            }
-            
-            /* Direct Download */
-            .direct-download {
-                background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
-                color: white;
-                border-color: #2563eb;
-            }
-            .direct-icon {
-                background: rgba(255, 255, 255, 0.2) !important;
-                color: white;
-            }
-            .direct-icon i {
-                font-size: 14px;
-            }
-            
-
-            .close-modal {
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                background: none;
-                border: none;
-                font-size: 24px;
-                cursor: pointer;
-                color: #9ca3af;
-                width: 40px;
-                height: 40px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 50%;
-                transition: all 0.2s ease;
-            }
-            .close-modal:hover {
-                background: #f3f4f6;
-                color: #374151;
-            }
-            
-            @media (max-width: 480px) {
-                .modal-content {
-                    padding: 24px;
-                    margin: 10px;
-                }
-                .download-buttons {
-                    gap: 10px;
-                }
-                .store-btn {
-                    padding: 10px 12px;
-                }
-                .store-icon {
-                    width: 28px;
-                    height: 28px;
-                    margin-right: 12px;
-                }
-                .store-title {
-                    font-size: 15px;
-                }
-            }
-        `;
-        
-        document.head.appendChild(style);
+        // Modal styles are now handled by CSS file
         document.body.appendChild(modal);
         
         // Update direct download button based on platform
@@ -1069,7 +909,6 @@ class ReceptionWebsite {
         // Close modal handlers
         const closeModal = () => {
             document.body.removeChild(modal);
-            document.head.removeChild(style);
         };
         
         modal.querySelector('.close-modal').addEventListener('click', closeModal);
