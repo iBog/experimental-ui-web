@@ -91,11 +91,100 @@
                 <div class="phone-mockup">
                     <div class="phone-screen">
                         <div class="app-interface">
-                            <div class="interface-header"></div>
-                            <div class="interface-content">
-                                <div class="interface-card"></div>
-                                <div class="interface-card"></div>
-                                <div class="interface-card"></div>
+                            <div class="interface-header">
+                                <div class="header-title" data-i18n="interface.appTitle">Reception App</div>
+                            </div>
+                            
+                            <!-- Cards Screen -->
+                            <div class="interface-screen cards-screen active">
+                                <div class="screen-title" data-i18n="interface.clients">Клиенты</div>
+                                <div class="interface-content">
+                                    <div class="interface-card card-style">
+                                        <div class="card-avatar-center"></div>
+                                        <div class="card-info-center">
+                                            <div class="card-name" data-i18n="interface.client1">Анна Петрова</div>
+                                            <div class="card-time">14:30</div>
+                                        </div>
+                                    </div>
+                                    <div class="interface-card card-style">
+                                        <div class="card-avatar-center"></div>
+                                        <div class="card-info-center">
+                                            <div class="card-name" data-i18n="interface.client2">Мария Иванова</div>
+                                            <div class="card-time">15:00</div>
+                                        </div>
+                                    </div>
+                                    <div class="interface-card card-style">
+                                        <div class="card-avatar-center"></div>
+                                        <div class="card-info-center">
+                                            <div class="card-name" data-i18n="interface.client3">Елена Козлова</div>
+                                            <div class="card-time">15:30</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Table Screen -->
+                            <div class="interface-screen table-screen">
+                                <div class="screen-title" data-i18n="interface.clients">Клиенты</div>
+                                <div class="table-container">
+                                    <div class="table-header">
+                                        <div class="table-cell" data-i18n="interface.nameColumn">Имя</div>
+                                        <div class="table-cell" data-i18n="interface.timeColumn">Время</div>
+                                    </div>
+                                    <div class="table-body">
+                                        <div class="table-row">
+                                            <div class="table-cell" data-i18n="interface.client1">Анна Петрова</div>
+                                            <div class="table-cell">14:30</div>
+                                        </div>
+                                        <div class="table-row">
+                                            <div class="table-cell" data-i18n="interface.client2">Мария Иванова</div>
+                                            <div class="table-cell">15:00</div>
+                                        </div>
+                                        <div class="table-row">
+                                            <div class="table-cell" data-i18n="interface.client3">Елена Козлова</div>
+                                            <div class="table-cell">15:30</div>
+                                        </div>
+                                        <div class="table-row growing">
+                                            <div class="table-cell" data-i18n="interface.client4">Ирина Смирнова</div>
+                                            <div class="table-cell">16:00</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Finance Screen -->
+                            <div class="interface-screen finance-screen">
+                                <div class="screen-title" data-i18n="interface.finance">Финансы</div>
+                                <div class="finance-content">
+                                    <div class="year-selector">
+                                        <div class="year-dropdown">
+                                            <span data-i18n="interface.year">Year</span>
+                                            <i class="fas fa-chevron-down"></i>
+                                        </div>
+                                    </div>
+                                    <div class="year-nav">
+                                        <button class="year-btn prev">‹</button>
+                                        <div class="year-display">2019</div>
+                                        <button class="year-btn next">›</button>
+                                    </div>
+                                    <div class="finance-stats">
+                                        <div class="stat-card">
+                                            <div class="stat-icon">👤</div>
+                                            <div class="stat-number">17</div>
+                                            <div class="stat-label" data-i18n="interface.newClients">New Clients</div>
+                                        </div>
+                                        <div class="stat-card">
+                                            <div class="stat-icon">📅</div>
+                                            <div class="stat-number">75</div>
+                                            <div class="stat-label" data-i18n="interface.totalVisits">Total Visits</div>
+                                        </div>
+                                        <div class="stat-card revenue">
+                                            <div class="stat-icon revenue-icon">$</div>
+                                            <div class="stat-number">$1169.50</div>
+                                            <div class="stat-label" data-i18n="interface.revenue">Revenue</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

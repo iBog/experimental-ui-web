@@ -289,7 +289,22 @@ const translations = {
         
         // Empty card translations
         "news.empty.title": "Latest News",
-        "news.empty.description": "Stay tuned for the latest updates and announcements"
+        "news.empty.description": "Stay tuned for the latest updates and announcements",
+        
+        // Interface translations
+        "interface.appTitle": "Reception App",
+        "interface.clients": "Clients",
+        "interface.finance": "Finance",
+        "interface.nameColumn": "Name",
+        "interface.timeColumn": "Time",
+        "interface.year": "Year",
+        "interface.newClients": "New Clients",
+        "interface.totalVisits": "Total Visits",
+        "interface.revenue": "Revenue",
+        "interface.client1": "Anna Petrova",
+        "interface.client2": "Maria Ivanova",
+        "interface.client3": "Elena Kozlova",
+        "interface.client4": "Irina Smirnova"
     },
     ru: {
         "nav.features": "Возможности",
@@ -580,7 +595,22 @@ const translations = {
         
         // Empty card translations - Russian
         "news.empty.title": "Последние новости",
-        "news.empty.description": "Следите за последними обновлениями и объявлениями"
+        "news.empty.description": "Следите за последними обновлениями и объявлениями",
+        
+        // Interface translations - Russian
+        "interface.appTitle": "Reception App",
+        "interface.clients": "Клиенты",
+        "interface.finance": "Финансы",
+        "interface.nameColumn": "Имя",
+        "interface.timeColumn": "Время",
+        "interface.year": "Год",
+        "interface.newClients": "Новые клиенты",
+        "interface.totalVisits": "Всего визитов",
+        "interface.revenue": "Доходы",
+        "interface.client1": "Анна Петрова",
+        "interface.client2": "Мария Иванова",
+        "interface.client3": "Елена Козлова",
+        "interface.client4": "Ирина Смирнова"
     }
 };
 
@@ -636,6 +666,8 @@ class ReceptionWebsite {
         this.currentSlide = 0;
         this.maxVisibleCards = 4;
         this.totalSlides = 0;
+        this.currentScreen = 0;
+        this.phoneInterfaceInterval = null;
         this.init();
     }
 
@@ -648,6 +680,7 @@ class ReceptionWebsite {
         this.renderNews();
         this.setupCarousel();
         this.setupImageModal();
+        this.setupPhoneInterface();
         this.loadLanguage(this.currentLanguage);
         this.loadTheme(this.currentTheme);
     }
@@ -1053,6 +1086,48 @@ class ReceptionWebsite {
             modal.classList.remove('active');
             document.body.style.overflow = '';
         }
+    }
+
+    setupPhoneInterface() {
+        const screens = document.querySelectorAll('.interface-screen');
+        if (screens.length === 0) return;
+
+        // Start the automatic switching
+        this.phoneInterfaceInterval = setInterval(() => {
+            this.switchPhoneScreen();
+        }, 5000);
+
+        // Initial setup - make sure first screen is active
+        screens.forEach((screen, index) => {
+            screen.classList.toggle('active', index === 0);
+        });
+    }
+
+    switchPhoneScreen() {
+        const screens = document.querySelectorAll('.interface-screen');
+        if (screens.length === 0) return;
+
+        // Remove active class from current screen
+        screens[this.currentScreen].classList.remove('active');
+
+        // Move to next screen
+        this.currentScreen = (this.currentScreen + 1) % screens.length;
+
+        // Add active class to new screen
+        screens[this.currentScreen].classList.add('active');
+
+        // Restart animations for the new screen
+        this.restartScreenAnimations(screens[this.currentScreen]);
+    }
+
+    restartScreenAnimations(screen) {
+        // Force restart animations by temporarily removing and adding animation classes
+        const animatedElements = screen.querySelectorAll('.interface-card, .table-row');
+        animatedElements.forEach(element => {
+            element.style.animation = 'none';
+            element.offsetHeight; // Trigger reflow
+            element.style.animation = null;
+        });
     }
 
     setupThemeSystem() {
