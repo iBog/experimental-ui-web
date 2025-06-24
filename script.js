@@ -2,6 +2,7 @@
 const translations = {
     en: {
         "nav.features": "Features",
+        "nav.news": "News",
         "nav.about": "About",
         "nav.contact": "Contact",
         "nav.download": "Download Now",
@@ -255,10 +256,44 @@ const translations = {
         "license.section10.content2": "Any disputes arising from this Agreement shall be resolved through binding arbitration in accordance with the rules of the relevant arbitration authority.",
         "license.section11.title": "Contact Information",
         "license.section11.content": "If you have any questions about this License Agreement, please contact us at legal@reception-app.com or through our app's support section.",
-        "license.lastUpdated": "Last updated: January 1, 2024"
+        "license.lastUpdated": "Last updated: January 1, 2024",
+        
+        // News section translations
+        "news.title": "Latest News",
+        "news.description": "Stay updated with the latest Reception App developments and announcements",
+        "news.month.june": "Jun",
+        "news.item1.title": "Reception App v2.5 Released",
+        "news.item1.excerpt": "New inventory management features, enhanced reporting capabilities, and improved dark theme support.",
+        "news.item2.title": "Cross-Platform Support Expanded",
+        "news.item2.excerpt": "Reception App now supports Linux and macOS, bringing our productivity tools to more platforms.",
+        "news.item3.title": "New Security Features",
+        "news.item3.excerpt": "Enhanced data encryption and secure storage implementation for better protection of client information.",
+        "news.tags.release": "Release",
+        "news.tags.features": "Features",
+        "news.tags.platforms": "Platforms",
+        "news.tags.update": "Update",
+        "news.tags.security": "Security",
+        "news.tags.privacy": "Privacy",
+        
+        // Dynamic news items
+        "news.dynamic.item1.title": "Reception App v2.5 Released",
+        "news.dynamic.item1.content": "We're excited to announce the release of Reception App v2.5! This major update includes new inventory management features, enhanced reporting capabilities, improved dark theme support, and better performance optimizations.",
+        "news.dynamic.item2.title": "Cross-Platform Support Expanded", 
+        "news.dynamic.item2.content": "Reception App now officially supports Linux and macOS platforms, bringing our comprehensive business management tools to even more users across different operating systems.",
+        "news.dynamic.item3.title": "Enhanced Security Features",
+        "news.dynamic.item3.content": "We've implemented advanced data encryption and secure storage protocols to provide better protection for your sensitive client information and business data.",
+        "news.dynamic.item4.title": "UI/UX Improvements",
+        "news.dynamic.item4.content": "Based on user feedback, we've refined the user interface with improved navigation, better accessibility features, and streamlined workflows for common tasks.",
+        "news.dynamic.item5.title": "Performance Optimization Update",
+        "news.dynamic.item5.content": "This update focuses on performance improvements, faster app startup times, and reduced memory usage for better experience on all devices.",
+        
+        // Empty card translations
+        "news.empty.title": "Latest News",
+        "news.empty.description": "Stay tuned for the latest updates and announcements"
     },
     ru: {
         "nav.features": "Возможности",
+        "nav.news": "Новости",
         "nav.about": "О нас",
         "nav.contact": "Контакты",
         "nav.download": "Скачать",
@@ -512,15 +547,95 @@ const translations = {
         "license.section10.content2": "Любые споры, возникающие из данного Соглашения, должны разрешаться посредством обязательного арбитража в соответствии с правилами соответствующего арбитражного органа.",
         "license.section11.title": "Контактная информация",
         "license.section11.content": "Если у вас есть вопросы об этом Лицензионном соглашении, пожалуйста, свяжитесь с нами по адресу legal@reception-app.com или через раздел поддержки нашего приложения.",
-        "license.lastUpdated": "Последнее обновление: 1 января 2024 г."
+        "license.lastUpdated": "Последнее обновление: 1 января 2024 г.",
+        
+        // News section translations - Russian
+        "news.title": "Последние новости",
+        "news.description": "Будьте в курсе последних разработок и объявлений Reception App",
+        "news.month.june": "Июн",
+        "news.item1.title": "Выпущена Reception App v2.5",
+        "news.item1.excerpt": "Новые функции управления складом, улучшенные возможности отчетности и улучшенная поддержка темной темы.",
+        "news.item2.title": "Расширена кроссплатформенная поддержка",
+        "news.item2.excerpt": "Reception App теперь поддерживает Linux и macOS, предоставляя наши инструменты продуктивности на большем количестве платформ.",
+        "news.item3.title": "Новые функции безопасности",
+        "news.item3.excerpt": "Улучшенное шифрование данных и безопасное хранение для лучшей защиты информации о клиентах.",
+        "news.tags.release": "Релиз",
+        "news.tags.features": "Функции",
+        "news.tags.platforms": "Платформы",
+        "news.tags.update": "Обновление",
+        "news.tags.security": "Безопасность",
+        "news.tags.privacy": "Конфиденциальность",
+        
+        // Dynamic news items - Russian
+        "news.dynamic.item1.title": "Выпущена Reception App v2.5",
+        "news.dynamic.item1.content": "Мы рады объявить о выпуске Reception App v2.5! Это крупное обновление включает новые функции управления складом, улучшенные возможности отчетности, улучшенную поддержку темной темы и оптимизацию производительности.",
+        "news.dynamic.item2.title": "Расширена кроссплатформенная поддержка",
+        "news.dynamic.item2.content": "Reception App теперь официально поддерживает платформы Linux и macOS, предоставляя наши комплексные инструменты управления бизнесом еще большему числу пользователей на разных операционных системах.",
+        "news.dynamic.item3.title": "Улучшенные функции безопасности", 
+        "news.dynamic.item3.content": "Мы внедрили продвинутое шифрование данных и протоколы безопасного хранения для лучшей защиты вашей конфиденциальной информации о клиентах и бизнес-данных.",
+        "news.dynamic.item4.title": "Улучшения UI/UX",
+        "news.dynamic.item4.content": "На основе отзывов пользователей мы усовершенствовали пользовательский интерфейс с улучшенной навигацией, лучшими функциями доступности и оптимизированными рабочими процессами для общих задач.",
+        "news.dynamic.item5.title": "Обновление оптимизации производительности",
+        "news.dynamic.item5.content": "Это обновление сосредоточено на улучшениях производительности, более быстром запуске приложения и сниженном использовании памяти для лучшего опыта на всех устройствах.",
+        
+        // Empty card translations - Russian
+        "news.empty.title": "Последние новости",
+        "news.empty.description": "Следите за последними обновлениями и объявлениями"
     }
 };
+
+// News data array - easily add new news items here
+const newsData = [
+    {
+        id: 1,
+        date: "2025-06-26",
+        titleKey: "news.dynamic.item1.title",
+        contentKey: "news.dynamic.item1.content",
+        tags: ["news.tags.release", "news.tags.features"],
+        image: null // Optional image URL
+    },
+    {
+        id: 2,
+        date: "2025-06-15",
+        titleKey: "news.dynamic.item2.title", 
+        contentKey: "news.dynamic.item2.content",
+        tags: ["news.tags.platforms", "news.tags.update"],
+        image: "images/reception-logo.png" // Example with image
+    },
+    {
+        id: 3,
+        date: "2025-06-08",
+        titleKey: "news.dynamic.item3.title",
+        contentKey: "news.dynamic.item3.content", 
+        tags: ["news.tags.security", "news.tags.privacy"],
+        image: null
+    },
+    {
+        id: 4,
+        date: "2025-05-28",
+        titleKey: "news.dynamic.item4.title",
+        contentKey: "news.dynamic.item4.content",
+        tags: ["news.tags.update", "news.tags.features"],
+        image: null
+    },
+    {
+        id: 5,
+        date: "2025-05-15",
+        titleKey: "news.dynamic.item5.title",
+        contentKey: "news.dynamic.item5.content",
+        tags: ["news.tags.release"],
+        image: null
+    }
+];
 
 class ReceptionWebsite {
     constructor() {
         this.currentLanguage = 'en';
         this.currentTheme = 'light';
         this.isMobileMenuOpen = false;
+        this.currentSlide = 0;
+        this.slidesPerView = 3;
+        this.totalSlides = 0;
         this.init();
     }
 
@@ -530,6 +645,9 @@ class ReceptionWebsite {
         this.setupThemeSystem();
         this.setupScrollAnimations();
         this.setupHeaderScroll();
+        this.renderNews();
+        this.setupCarousel();
+        this.setupImageModal();
         this.loadLanguage(this.currentLanguage);
         this.loadTheme(this.currentTheme);
     }
@@ -688,6 +806,252 @@ class ReceptionWebsite {
                 element.textContent = langData[key];
             }
         });
+        
+        // Re-render news to update translations
+        this.renderNews();
+        this.updateCarousel();
+    }
+
+    renderNews() {
+        const newsContainer = document.querySelector('.news-grid');
+        if (!newsContainer) return;
+
+        // Sort news by date (newest first)
+        const sortedNews = [...newsData].sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        // Clear existing content
+        newsContainer.innerHTML = '';
+        
+        // Get current language translations
+        const langData = translations[this.currentLanguage] || translations.en;
+        
+        // Add empty placeholder card at the beginning
+        const emptyCard = this.createEmptyCard();
+        newsContainer.appendChild(emptyCard);
+        
+        // Render each news item
+        sortedNews.forEach((newsItem, index) => {
+            const newsCard = this.createNewsCard(newsItem, langData, index + 1);
+            newsContainer.appendChild(newsCard);
+        });
+        
+        this.totalSlides = sortedNews.length + 1; // +1 for empty card
+        this.currentSlide = 1; // Start at position 1 to center the first news item
+        this.updateCarouselIndicators();
+    }
+
+    createNewsCard(newsItem, langData, index) {
+        const article = document.createElement('article');
+        article.className = 'news-card';
+        article.style.animationDelay = `${index * 0.1}s`;
+        
+        const dateObj = new Date(newsItem.date);
+        const day = dateObj.getDate().toString().padStart(2, '0');
+        const month = dateObj.toLocaleDateString(this.currentLanguage === 'ru' ? 'ru-RU' : 'en-US', { month: 'short' });
+        const year = dateObj.getFullYear();
+        
+        const title = langData[newsItem.titleKey] || newsItem.titleKey;
+        const content = langData[newsItem.contentKey] || newsItem.contentKey;
+        
+        article.innerHTML = `
+            <div class="news-card-content">
+                <div class="news-card-header">
+                    <div class="news-date-badge">
+                        <span class="news-day">${day}</span>
+                        <span class="news-month">${month}</span>
+                        <span class="news-year">${year}</span>
+                    </div>
+                </div>
+                <div class="news-card-main">
+                    <div class="news-card-left">
+                        <div class="news-card-body">
+                            <h3 class="news-card-title">${title}</h3>
+                            <p class="news-card-text">${content}</p>
+                            <div class="news-card-tags">
+                                ${newsItem.tags.map(tagKey => `<span class="news-tag">${langData[tagKey] || tagKey}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                    ${newsItem.image ? `
+                        <div class="news-card-right">
+                            <div class="news-image" data-image="${newsItem.image}" data-title="${title}">
+                                <img src="${newsItem.image}" alt="${title}" />
+                            </div>
+                        </div>
+                    ` : ''}
+                </div>
+            </div>
+        `;
+        
+        return article;
+    }
+
+    createEmptyCard() {
+        const article = document.createElement('article');
+        article.className = 'news-card news-card-empty';
+        article.style.animationDelay = '0s';
+        
+        article.innerHTML = `
+            <div class="news-card-content">
+                <div class="news-card-empty-content">
+                    <div class="empty-card-icon">📰</div>
+                    <h3 class="empty-card-title" data-i18n="news.empty.title">Latest News</h3>
+                    <p class="empty-card-text" data-i18n="news.empty.description">Stay tuned for the latest updates and announcements</p>
+                </div>
+            </div>
+        `;
+        
+        return article;
+    }
+
+    setupCarousel() {
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => this.prevSlide());
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => this.nextSlide());
+        }
+        
+        // Handle window resize for responsive slides
+        window.addEventListener('resize', () => {
+            this.handleCarouselResize();
+        });
+        
+        this.handleCarouselResize();
+    }
+
+    handleCarouselResize() {
+        const width = window.innerWidth;
+        if (width <= 768) {
+            this.slidesPerView = 1;
+        } else if (width <= 1024) {
+            this.slidesPerView = 2;
+        } else {
+            this.slidesPerView = 3;
+        }
+        this.updateCarousel();
+    }
+
+    prevSlide() {
+        if (this.currentSlide > 0) {
+            this.currentSlide--;
+            this.updateCarousel();
+        }
+    }
+
+    nextSlide() {
+        const maxSlide = Math.max(0, this.totalSlides - this.slidesPerView);
+        if (this.currentSlide < maxSlide) {
+            this.currentSlide++;
+            this.updateCarousel();
+        }
+    }
+
+    updateCarousel() {
+        const newsGrid = document.querySelector('.news-grid');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        if (!newsGrid) return;
+        
+        const slideWidth = 100 / this.slidesPerView;
+        const translateX = -this.currentSlide * slideWidth;
+        
+        newsGrid.style.transform = `translateX(${translateX}%)`;
+        
+        // Update button states
+        if (prevBtn) {
+            prevBtn.disabled = this.currentSlide === 0;
+        }
+        
+        if (nextBtn) {
+            const maxSlide = Math.max(0, this.totalSlides - this.slidesPerView);
+            nextBtn.disabled = this.currentSlide >= maxSlide;
+        }
+        
+        this.updateCarouselIndicators();
+    }
+
+    updateCarouselIndicators() {
+        const indicatorsContainer = document.getElementById('carouselIndicators');
+        if (!indicatorsContainer) return;
+        
+        const maxSlide = Math.max(0, this.totalSlides - this.slidesPerView);
+        const dotsCount = maxSlide + 1;
+        
+        indicatorsContainer.innerHTML = '';
+        
+        for (let i = 0; i < dotsCount; i++) {
+            const dot = document.createElement('div');
+            dot.className = `carousel-dot ${i === this.currentSlide ? 'active' : ''}`;
+            dot.addEventListener('click', () => {
+                this.currentSlide = i;
+                this.updateCarousel();
+            });
+            indicatorsContainer.appendChild(dot);
+        }
+    }
+
+    setupImageModal() {
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeBtn = document.getElementById('imageModalClose');
+        
+        if (!modal || !modalImage || !closeBtn) return;
+        
+        // Close modal on close button click
+        closeBtn.addEventListener('click', () => {
+            this.closeImageModal();
+        });
+        
+        // Close modal on backdrop click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                this.closeImageModal();
+            }
+        });
+        
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                this.closeImageModal();
+            }
+        });
+        
+        // Handle image clicks
+        document.addEventListener('click', (e) => {
+            const newsImage = e.target.closest('.news-image');
+            if (newsImage) {
+                const imageSrc = newsImage.dataset.image;
+                const title = newsImage.dataset.title;
+                this.openImageModal(imageSrc, title);
+            }
+        });
+    }
+
+    openImageModal(imageSrc, title) {
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        
+        if (modal && modalImage) {
+            modalImage.src = imageSrc;
+            modalImage.alt = title;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    closeImageModal() {
+        const modal = document.getElementById('imageModal');
+        
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     }
 
     setupThemeSystem() {

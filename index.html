@@ -20,6 +20,7 @@
                 </a>
                 <div class="nav-menu">
                     <a href="#features" class="nav-link" data-i18n="nav.features">Features</a>
+                    <a href="#news" class="nav-link" data-i18n="nav.news">News</a>
                     <a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
                     <a href="#contact" class="nav-link" data-i18n="nav.social">Social</a>
                     <a href="#contact" class="nav-link" data-i18n="nav.legal">Legal Info</a>
@@ -43,6 +44,7 @@
                 </button>
                 <div class="mobile-menu">
                     <a href="#features" class="mobile-menu-item" data-i18n="nav.features">Features</a>
+                    <a href="#news" class="mobile-menu-item" data-i18n="nav.news">News</a>
                     <a href="mailto:support@experimentalui.com" class="mobile-menu-item" data-i18n="nav.contact">Contact</a>
                     <a href="#contact" class="mobile-menu-item" data-i18n="nav.social">Social</a>
                     <a href="#contact" class="mobile-menu-item" data-i18n="nav.legal">Legal Info</a>
@@ -306,7 +308,38 @@
         </div>
     </section>
 
-
+    <!-- News Section -->
+    <section class="news" id="news">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="news.title">Latest News</h2>
+                <p class="section-description" data-i18n="news.description">Stay updated with the latest Reception App developments and announcements</p>
+            </div>
+            
+            <div class="news-carousel-container">
+                <div class="news-carousel">
+                    <div class="news-grid">
+                        <!-- News cards will be dynamically generated here -->
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <button class="carousel-btn" id="prevBtn">‹</button>
+                    <div class="carousel-indicators" id="carouselIndicators">
+                        <!-- Dots will be dynamically generated here -->
+                    </div>
+                    <button class="carousel-btn" id="nextBtn">›</button>
+                </div>
+            </div>
+            
+            <!-- Image Modal -->
+            <div class="image-modal" id="imageModal">
+                <div class="image-modal-content">
+                    <button class="image-modal-close" id="imageModalClose">×</button>
+                    <img id="modalImage" src="" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer" id="contact">
