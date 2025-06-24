@@ -329,7 +329,7 @@ body {
 /* Hero Section */
 .hero {
     background: var(--gradient-hero);
-    padding: 120px 0 80px;
+    padding: 100px 0 80px;
     min-height: auto;
     display: flex;
     align-items: center;
@@ -628,8 +628,6 @@ body {
     color: var(--gray-500);
 }
 
-
-
 .table-container {
     background: var(--white);
     border-radius: 8px;
@@ -694,8 +692,6 @@ body {
     font-weight: 600;
     color: var(--primary-blue);
 }
-
-
 
 .finance-content {
     display: flex;
@@ -1088,8 +1084,6 @@ body {
     flex-shrink: 0;
 }
 
-
-
 .news-image {
     width: 100%;
     height: 100%;
@@ -1192,35 +1186,111 @@ body {
     pointer-events: none;
 }
 
-
-
 /* Responsive News */
 @media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .nav-actions .cta-btn,
+    .nav-actions .theme-switcher {
+        display: none;
+    }
+    
+    .nav-actions .language-switcher {
+        display: flex;
+    }
+    
+    .hero {
+        padding: 90px 0 60px;
+        margin-top: 0;
+    }
+    
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+        padding-top: 20px;
+    }
+    
+    .hero-subtitle {
+        font-size: 2rem;
+        line-height: 1.2;
+        margin-bottom: 20px;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+        margin-bottom: 24px;
+        padding: 0 10px;
+    }
+    
+    .hero .features-list {
+        padding: 0 10px;
+        text-align: left;
+        margin: 20px auto;
+        max-width: 400px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        margin-top: 24px;
+    }
+    
+    .primary-btn,
+    .secondary-btn {
+        width: 100%;
+        max-width: 280px;
+        padding: 14px 24px;
+        font-size: 1rem;
+    }
+    
+    .phone-mockup {
+        width: 240px;
+        height: 480px;
+        margin: 20px auto 0;
+    }
+    
     .news {
         padding: 60px 0;
+        overflow-x: hidden;
     }
     
     .news-carousel-container {
-        height: 300px;
-        max-width: 90%;
-        padding-right: 60px;
+        height: 640px;
+        max-width: 95%;
+        margin: 0 auto;
+        padding: 0 20px;
+        position: relative;
+    }
+    
+    .news-grid {
+        padding-left: 0;
+        margin-left: 0;
     }
     
     .news-card.card-1 {
-        transform: translateX(-30%) translateY(8px) translateZ(-10px) rotateY(-6deg);
+        transform: translateX(-25%) translateY(8px) translateZ(-10px) rotateY(-5deg);
     }
     
     .news-card.card-2 {
-        transform: translateX(-15%) translateY(16px) translateZ(-20px) rotateY(-12deg);
+        transform: translateX(-12%) translateY(16px) translateZ(-20px) rotateY(-10deg);
     }
     
     .news-card.card-3 {
-        transform: translateX(0%) translateY(24px) translateZ(-30px) rotateY(-18deg);
+        transform: translateX(0%) translateY(24px) translateZ(-30px) rotateY(-15deg);
     }
     
     .news-card {
         max-width: 100%;
-        height: 280px;
+        height: 600px;
+        margin: 0;
     }
     
     .news-card-header {
@@ -1248,20 +1318,240 @@ body {
         align-self: flex-start;
         padding: 6px 12px;
         font-size: 0.8rem;
+        margin-bottom: 8px;
     }
     
     .news-image {
         min-height: 120px;
+        border-radius: 8px;
     }
     
     .carousel-nav {
         margin-top: 24px;
+        margin-bottom: 40px;
+        justify-content: center;
+        padding: 0 20px;
     }
     
     .carousel-btn {
         width: 44px;
         height: 44px;
         font-size: 1.1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 16px;
+    }
+    
+    .section-description {
+        font-size: 1rem;
+        margin-bottom: 32px;
+        padding: 0 10px;
+    }
+    
+    .features-categories {
+        gap: 32px;
+    }
+    
+    .category-header {
+        padding: 20px 24px;
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+    
+    .category-features {
+        padding: 24px;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .feature-item {
+        padding: 16px;
+    }
+    
+    .footer {
+        padding: 60px 0 24px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .footer-brand {
+        margin: 0 auto;
+        max-width: 100%;
+    }
+    
+    .footer-logo {
+        justify-content: center;
+        margin-bottom: 16px;
+    }
+    
+    .footer-description {
+        margin-bottom: 24px;
+        padding: 0 10px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .social-links {
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    
+    .footer-links {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .footer-column {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .footer-column h4 {
+        margin-bottom: 16px;
+        text-align: center;
+    }
+    
+    .footer-column a {
+        text-align: center;
+        margin-bottom: 12px;
+        display: block;
+    }
+    
+    .footer-bottom {
+        text-align: center;
+        padding: 20px 0 0;
+        margin: 20px 0 0;
+    }
+    
+    .container {
+        padding: 0 16px;
+        margin: 0 auto;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 80px 0 40px;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.75rem;
+        line-height: 1.3;
+    }
+    
+    .hero-description {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .hero .features-list {
+        font-size: 0.9rem;
+        max-width: 320px;
+    }
+    
+    .primary-btn,
+    .secondary-btn {
+        max-width: 250px;
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
+    
+    .phone-mockup {
+        width: 200px;
+        height: 400px;
+    }
+    
+    .news-carousel-container {
+        height: 560px;
+        max-width: 98%;
+        padding: 0 10px;
+    }
+    
+    .news-card {
+        height: 520px;
+    }
+    
+    .news-card-header {
+        padding: 12px 16px;
+    }
+    
+    .news-card-body {
+        padding: 16px;
+    }
+    
+    .news-image {
+        min-height: 100px;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .section-description {
+        font-size: 0.95rem;
+        padding: 0 5px;
+    }
+    
+    .category-features {
+        grid-template-columns: 1fr;
+        padding: 16px;
+        gap: 16px;
+    }
+    
+    .feature-item {
+        padding: 12px;
+    }
+    
+    .footer {
+        padding: 40px 0 20px;
+    }
+    
+    .footer-content {
+        gap: 30px;
+    }
+    
+    .footer-description {
+        font-size: 0.9rem;
+        padding: 0 5px;
+    }
+    
+    .footer-links {
+        gap: 24px;
+    }
+    
+    .footer-column h4 {
+        font-size: 1rem;
+        margin-bottom: 12px;
+    }
+    
+    .footer-column a {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+    }
+    
+    .container {
+        padding: 0 12px;
     }
 }
 
@@ -1503,106 +1793,6 @@ body {
 [data-theme="dark"] .mobile-theme-btn:hover {
     background: var(--gray-100);
     color: var(--primary-blue);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .nav-menu {
-        display: none;
-    }
-    
-    .mobile-menu-toggle {
-        display: flex;
-    }
-    
-    .nav-actions .cta-btn,
-    .nav-actions .theme-switcher {
-        display: none;
-    }
-    
-    .nav-actions .language-switcher {
-        display: flex;
-    }
-    
-    .hero-container {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        text-align: center;
-    }
-    
-    .hero-subtitle {
-        font-size: 2rem;
-    }
-    
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .primary-btn,
-    .secondary-btn {
-        width: 100%;
-        max-width: 300px;
-    }
-    
-    .phone-mockup {
-        width: 240px;
-        height: 480px;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
-    .features-categories {
-        gap: 32px;
-    }
-    
-    .category-header {
-        padding: 20px 24px;
-        flex-direction: column;
-        text-align: center;
-        gap: 12px;
-    }
-    
-    .category-features {
-        padding: 24px;
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .feature-item {
-        padding: 16px;
-    }
-    
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-    
-    .footer-links {
-        grid-template-columns: 1fr;
-        gap: 32px;
-    }
-    
-    .container {
-        padding: 0 16px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero {
-        padding: 40px 0 40px;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.75rem;
-    }
-    
-    .category-features {
-        grid-template-columns: 1fr;
-        padding: 16px;
-    }
 }
 
 /* Download Modal Styles */
@@ -1849,7 +2039,73 @@ body {
     background: var(--gray-200);
 }
 
-/* Responsive modal */
+/* Carousel Navigation */
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.carousel-btn {
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: var(--white);
+    color: var(--gray-600);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.carousel-btn:hover {
+    background: var(--gray-50);
+    color: var(--primary-blue);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.carousel-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.carousel-btn:disabled:hover {
+    background: var(--white);
+    color: var(--gray-600);
+    box-shadow: var(--shadow-md);
+}
+
+.carousel-indicators {
+    display: flex;
+    gap: 8px;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gray-300);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.carousel-dot.active {
+    background: var(--primary-blue);
+}
+
+.carousel-dot:hover {
+    background: var(--primary-blue);
+}
+
+/* Responsive modal styles */
 @media (max-width: 480px) {
     .modal-content {
         padding: 24px;
@@ -1880,70 +2136,6 @@ body {
         height: 28px;
         margin-right: 12px;
     }
-}
-
-/* Carousel Navigation */
-.carousel-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    margin-top: 32px;
-}
-
-.carousel-btn {
-    background: var(--white);
-    border: 2px solid var(--primary-blue);
-    color: var(--primary-blue);
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: var(--transition);
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-.carousel-btn:hover {
-    background: var(--primary-blue);
-    color: white;
-    transform: scale(1.1);
-}
-
-.carousel-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none;
-}
-
-.carousel-btn:disabled:hover {
-    background: var(--white);
-    color: var(--primary-blue);
-}
-
-.carousel-indicators {
-    display: flex;
-    gap: 8px;
-}
-
-.carousel-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--gray-300);
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.carousel-dot.active {
-    background: var(--primary-blue);
-}
-
-.carousel-dot:hover {
-    background: var(--accent-blue);
 }
 
 /* Image Modal */
