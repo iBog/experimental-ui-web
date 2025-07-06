@@ -625,7 +625,7 @@ const translations = {
 const newsData = [
     {
         id: 1,
-        date: "2025-06-26",
+        date: "2025-07-07",
         titleKey: "news.dynamic.item1.title",
         contentKey: "news.dynamic.item1.content",
         tags: ["news.tags.release", "news.tags.features"],
@@ -633,7 +633,7 @@ const newsData = [
     },
     {
         id: 2,
-        date: "2025-06-15",
+        date: "2025-06-25",
         titleKey: "news.dynamic.item2.title", 
         contentKey: "news.dynamic.item2.content",
         tags: ["news.tags.platforms", "news.tags.update"],
@@ -669,8 +669,8 @@ class ReceptionWebsite {
     }
 
     setupEventListeners() {
-        // Language switcher
-        document.querySelectorAll('.lang-btn').forEach(btn => {
+        // Language switcher (desktop and mobile)
+        document.querySelectorAll('.lang-btn, .mobile-lang-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const lang = e.target.dataset.lang;
                 this.switchLanguage(lang);
@@ -797,8 +797,8 @@ class ReceptionWebsite {
     }
 
     setupLanguageSystem() {
-        // Set initial active language button
-        document.querySelectorAll('.lang-btn').forEach(btn => {
+        // Set initial active language button (desktop and mobile)
+        document.querySelectorAll('.lang-btn, .mobile-lang-btn').forEach(btn => {
             btn.classList.remove('active');
             if (btn.dataset.lang === this.currentLanguage) {
                 btn.classList.add('active');
@@ -812,8 +812,8 @@ class ReceptionWebsite {
             localStorage.setItem('language', lang);
             this.loadLanguage(lang);
             
-            // Update active language button
-            document.querySelectorAll('.lang-btn').forEach(btn => {
+            // Update active language button (desktop and mobile)
+            document.querySelectorAll('.lang-btn, .mobile-lang-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.dataset.lang === lang) {
                     btn.classList.add('active');
@@ -1239,22 +1239,8 @@ class ReceptionWebsite {
     }
 
     handleDownloadClick() {
-        // Simulate app download - in real implementation, this would redirect to app stores
-        const userAgent = navigator.userAgent.toLowerCase();
-        let downloadUrl = '#';
-        
-        if (userAgent.includes('android')) {
-            downloadUrl = 'https://play.google.com/store'; // Google Play Store
-        } else if (userAgent.includes('iphone') || userAgent.includes('ipad')) {
-            downloadUrl = 'https://apps.apple.com/'; // App Store
-        } else {
-            // Desktop - show modal or redirect to landing page
-            this.showDownloadModal();
-            return;
-        }
-        
-        // Open download link
-        window.open(downloadUrl, '_blank');
+        // Always show download modal for all platforms including mobile
+        this.showDownloadModal();
     }
 
     showDownloadModal() {
@@ -1401,6 +1387,7 @@ class ReceptionWebsite {
         const titleElement = document.getElementById('direct-download-title');
         const statusElement = document.getElementById('platform-status');
         const releases = this.getAvailableReleases();
+        const isMobile = this.isMobileDevice();
         
         if (titleElement) {
             const release = releases[platform];
@@ -1408,13 +1395,13 @@ class ReceptionWebsite {
                 // Show version info for available releases
                 switch (platform) {
                     case 'windows':
-                        titleElement.textContent = 'Windows EXE';
+                        titleElement.textContent = 'Windows Setup';
                         break;
                     case 'macos':
-                        titleElement.textContent = 'macOS v0.7.11';
+                        titleElement.textContent = isMobile ? 'macOS v0.7.11' : 'macOS v0.7.11';
                         break;
                     case 'android':
-                        titleElement.textContent = 'Android v0.7.11';
+                        titleElement.textContent = isMobile ? 'Android APK' : 'Android v0.7.11';
                         break;
                     case 'linux':
                         titleElement.textContent = 'Linux AppImage';
@@ -1426,7 +1413,7 @@ class ReceptionWebsite {
                 // Show generic names for unavailable releases
                 switch (platform) {
                     case 'windows':
-                        titleElement.textContent = 'Windows EXE';
+                        titleElement.textContent = 'Windows Setup';
                         break;
                     case 'macos':
                         titleElement.textContent = 'macOS DMG';
@@ -1452,6 +1439,10 @@ class ReceptionWebsite {
                 badge.className = `status-badge ${isAvailable ? 'available' : 'coming-soon'}`;
             }
         }
+    }
+
+    isMobileDevice() {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     }
 
     updatePlatformStatusList() {
@@ -1579,7 +1570,7 @@ class ReceptionWebsite {
         
         // Local releases folder URLs
         const downloadUrls = {
-            windows: './releases/windows/reception-app-windows.exe',
+            windows: './releases/windows/ReceptionLocal-windows-setup-0.7.11.exe',
             macos: './releases/macos/ReceptionLocal-0.7.11.dmg',
             android: './releases/android/Reception-Local-0.7.11.apk',
             linux: './releases/linux/reception-app-linux.appimage'
@@ -1615,11 +1606,11 @@ class ReceptionWebsite {
     getAvailableReleases() {
         return {
             windows: {
-                available: false, // Will be set to true when Windows build is added
-                url: './releases/windows/reception-app-windows.exe',
-                fileName: 'reception-app-windows.exe',
+                available: true, // Windows build is now available
+                url: './releases/windows/ReceptionLocal-windows-setup-0.7.11.exe',
+                fileName: 'ReceptionLocal-windows-setup-0.7.11.exe',
                 platform: 'Windows',
-                description: 'Windows executable (64-bit)'
+                description: 'Windows installer (64-bit) - v0.7.11'
             },
             macos: {
                 available: true, // macOS build is now available
