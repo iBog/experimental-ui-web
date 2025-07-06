@@ -97,7 +97,7 @@ body {
     transition: var(--transition);
     width: 100%;
     max-width: 100vw;
-    /* Allow dropdowns (mobile menu) to render outside header */
+    /* Allow mobile menu to extend beyond nav on small screens */
     overflow: visible;
 }
 
@@ -312,10 +312,6 @@ body {
 }
 
 .mobile-lang-switcher {
-    display: none;
-}
-
-.mobile-menu {
     display: none;
 }
 
