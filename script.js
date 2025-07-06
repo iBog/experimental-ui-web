@@ -285,16 +285,10 @@ const translations = {
         "news.tags.privacy": "Privacy",
         
         // Dynamic news items
-        "news.dynamic.item1.title": "Reception App v2.5 Released",
-        "news.dynamic.item1.content": "We're excited to announce the release of Reception App v2.5! This major update includes new inventory management features, enhanced reporting capabilities, improved dark theme support, and better performance optimizations.",
-        "news.dynamic.item2.title": "Cross-Platform Support Expanded", 
-        "news.dynamic.item2.content": "Reception App now officially supports Linux and macOS platforms, bringing our comprehensive business management tools to even more users across different operating systems.",
-        "news.dynamic.item3.title": "Enhanced Security Features",
-        "news.dynamic.item3.content": "We've implemented advanced data encryption and secure storage protocols to provide better protection for your sensitive client information and business data.",
-        "news.dynamic.item4.title": "UI/UX Improvements",
-        "news.dynamic.item4.content": "Based on user feedback, we've refined the user interface with improved navigation, better accessibility features, and streamlined workflows for common tasks.",
-        "news.dynamic.item5.title": "Performance Optimization Update",
-        "news.dynamic.item5.content": "This update focuses on performance improvements, faster app startup times, and reduced memory usage for better experience on all devices.",
+        "news.dynamic.item1.title": "Reception Local v0.7.11 Released",
+        "news.dynamic.item1.content": "We're excited to announce the release of Reception Local v0.7.11!",
+        "news.dynamic.item2.title": "Site launch", 
+        "news.dynamic.item2.content": "First version of the this site was launched",
         
         // Empty card translations
         "news.empty.title": "Latest News",
@@ -601,16 +595,10 @@ const translations = {
         "news.tags.privacy": "Конфиденциальность",
         
         // Dynamic news items - Russian
-        "news.dynamic.item1.title": "Выпущена Reception App v2.5",
-        "news.dynamic.item1.content": "Мы рады объявить о выпуске Reception App v2.5! Это крупное обновление включает новые функции управления складом, улучшенные возможности отчетности, улучшенную поддержку темной темы и оптимизацию производительности.",
-        "news.dynamic.item2.title": "Расширена кроссплатформенная поддержка",
-        "news.dynamic.item2.content": "Reception App теперь официально поддерживает платформы Linux и macOS, предоставляя наши комплексные инструменты управления бизнесом еще большему числу пользователей на разных операционных системах.",
-        "news.dynamic.item3.title": "Улучшенные функции безопасности", 
-        "news.dynamic.item3.content": "Мы внедрили продвинутое шифрование данных и протоколы безопасного хранения для лучшей защиты вашей конфиденциальной информации о клиентах и бизнес-данных.",
-        "news.dynamic.item4.title": "Улучшения UI/UX",
-        "news.dynamic.item4.content": "На основе отзывов пользователей мы усовершенствовали пользовательский интерфейс с улучшенной навигацией, лучшими функциями доступности и оптимизированными рабочими процессами для общих задач.",
-        "news.dynamic.item5.title": "Обновление оптимизации производительности",
-        "news.dynamic.item5.content": "Это обновление сосредоточено на улучшениях производительности, более быстром запуске приложения и сниженном использовании памяти для лучшего опыта на всех устройствах.",
+        "news.dynamic.item1.title": "Выпущена Reception Local v0.7.11",
+        "news.dynamic.item1.content": "Мы рады объявить о выпуске Reception Local v0.7.11! Первые платформы для тестирования - Android, MacOS (Ноутбуки Mac M1-M4)",
+        "news.dynamic.item2.title": "Запущан сайт",
+        "news.dynamic.item2.content": "Первая версия сайта запущена",
         
         // Empty card translations - Russian
         "news.empty.title": "Последние новости",
@@ -650,30 +638,6 @@ const newsData = [
         contentKey: "news.dynamic.item2.content",
         tags: ["news.tags.platforms", "news.tags.update"],
         image: "images/reception-logo.png" // Example with image
-    },
-    {
-        id: 3,
-        date: "2025-06-08",
-        titleKey: "news.dynamic.item3.title",
-        contentKey: "news.dynamic.item3.content", 
-        tags: ["news.tags.security", "news.tags.privacy"],
-        image: null
-    },
-    {
-        id: 4,
-        date: "2025-05-28",
-        titleKey: "news.dynamic.item4.title",
-        contentKey: "news.dynamic.item4.content",
-        tags: ["news.tags.update", "news.tags.features"],
-        image: null
-    },
-    {
-        id: 5,
-        date: "2025-05-15",
-        titleKey: "news.dynamic.item5.title",
-        contentKey: "news.dynamic.item5.content",
-        tags: ["news.tags.release"],
-        image: null
     }
 ];
 
@@ -1361,7 +1325,18 @@ class ReceptionWebsite {
                                 <div class="store-subtitle">DIRECT DOWNLOAD</div>
                                 <div class="store-title" id="direct-download-title">Download</div>
                             </div>
+                            <div class="platform-status" id="platform-status">
+                                <span class="status-badge coming-soon">Coming Soon</span>
+                            </div>
                         </a>
+                        
+                        <!-- Platform Downloads -->
+                        <div class="platform-downloads">
+                            <h4>All Platforms:</h4>
+                            <div class="platform-list" id="platform-list">
+                                <!-- Platform status will be populated by JavaScript -->
+                            </div>
+                        </div>
                     </div>
                     
 
@@ -1376,6 +1351,9 @@ class ReceptionWebsite {
         
         // Update direct download button based on platform
         this.updateDirectDownloadButton();
+        
+        // Update platform status list
+        this.updatePlatformStatusList();
         
         // Close modal handlers
         const closeModal = () => {
@@ -1421,39 +1399,243 @@ class ReceptionWebsite {
     updateDirectDownloadButton() {
         const platform = this.detectPlatform();
         const titleElement = document.getElementById('direct-download-title');
+        const statusElement = document.getElementById('platform-status');
+        const releases = this.getAvailableReleases();
         
         if (titleElement) {
-            switch (platform) {
-                case 'windows':
-                    titleElement.textContent = 'Windows EXE';
-                    break;
-                case 'macos':
-                    titleElement.textContent = 'macOS DMG';
-                    break;
-                case 'android':
-                    titleElement.textContent = 'Android APK';
-                    break;
-                case 'linux':
-                    titleElement.textContent = 'Linux AppImage';
-                    break;
-                default:
-                    titleElement.textContent = 'Download';
+            const release = releases[platform];
+            if (release && release.available) {
+                // Show version info for available releases
+                switch (platform) {
+                    case 'windows':
+                        titleElement.textContent = 'Windows EXE';
+                        break;
+                    case 'macos':
+                        titleElement.textContent = 'macOS v0.7.11';
+                        break;
+                    case 'android':
+                        titleElement.textContent = 'Android v0.7.11';
+                        break;
+                    case 'linux':
+                        titleElement.textContent = 'Linux AppImage';
+                        break;
+                    default:
+                        titleElement.textContent = 'Download';
+                }
+            } else {
+                // Show generic names for unavailable releases
+                switch (platform) {
+                    case 'windows':
+                        titleElement.textContent = 'Windows EXE';
+                        break;
+                    case 'macos':
+                        titleElement.textContent = 'macOS DMG';
+                        break;
+                    case 'android':
+                        titleElement.textContent = 'Android APK';
+                        break;
+                    case 'linux':
+                        titleElement.textContent = 'Linux AppImage';
+                        break;
+                    default:
+                        titleElement.textContent = 'Download';
+                }
             }
+        }
+        
+        // Update platform status badge
+        if (statusElement && releases[platform]) {
+            const isAvailable = releases[platform].available;
+            const badge = statusElement.querySelector('.status-badge');
+            if (badge) {
+                badge.textContent = isAvailable ? 'Available' : 'Coming Soon';
+                badge.className = `status-badge ${isAvailable ? 'available' : 'coming-soon'}`;
+            }
+        }
+    }
+
+    updatePlatformStatusList() {
+        const platformListElement = document.getElementById('platform-list');
+        if (!platformListElement) return;
+        
+        const releases = this.getAvailableReleases();
+        const platformOrder = ['windows', 'macos', 'android'];
+        
+        let listHTML = '';
+        platformOrder.forEach(platformKey => {
+            const release = releases[platformKey];
+            if (release) {
+                const isAvailable = release.available;
+                listHTML += `
+                    <div class="platform-item">
+                        <div class="platform-info">
+                            <span class="platform-name">${release.platform}</span>
+                            <span class="platform-desc">${release.description}</span>
+                        </div>
+                        <span class="status-badge ${isAvailable ? 'available' : 'coming-soon'}">
+                            ${isAvailable ? 'Available' : 'Coming Soon'}
+                        </span>
+                    </div>
+                `;
+            }
+        });
+        
+        platformListElement.innerHTML = listHTML;
+        
+        // Add styles for platform list
+        if (!document.getElementById('platform-styles')) {
+            const style = document.createElement('style');
+            style.id = 'platform-styles';
+            style.textContent = `
+                .platform-downloads {
+                    margin-top: 20px;
+                    padding-top: 20px;
+                    border-top: 1px solid rgba(255,255,255,0.1);
+                }
+                
+                .platform-downloads h4 {
+                    margin: 0 0 15px 0;
+                    color: #333;
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+                
+                .platform-item {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 10px 0;
+                    border-bottom: 1px solid rgba(0,0,0,0.1);
+                }
+                
+                .platform-item:last-child {
+                    border-bottom: none;
+                }
+                
+                .platform-info {
+                    display: flex;
+                    flex-direction: column;
+                }
+                
+                .platform-name {
+                    font-weight: 500;
+                    color: #333;
+                    font-size: 14px;
+                }
+                
+                .platform-desc {
+                    font-size: 12px;
+                    color: #666;
+                    margin-top: 2px;
+                }
+                
+                .status-badge {
+                    padding: 4px 8px;
+                    border-radius: 12px;
+                    font-size: 11px;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                }
+                
+                .status-badge.available {
+                    background: #10b981;
+                    color: white;
+                }
+                
+                .status-badge.coming-soon {
+                    background: #f59e0b;
+                    color: white;
+                }
+                
+                .platform-status {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                }
+                
+                .store-btn {
+                    position: relative;
+                }
+                
+                [data-theme="dark"] .platform-downloads h4 {
+                    color: #fff;
+                }
+                
+                [data-theme="dark"] .platform-name {
+                    color: #fff;
+                }
+                
+                [data-theme="dark"] .platform-desc {
+                    color: #ccc;
+                }
+            `;
+            document.head.appendChild(style);
         }
     }
 
     getDirectDownloadUrl() {
         const platform = this.detectPlatform();
         
-        // These URLs should be updated with actual download links when available
+        // Local releases folder URLs
         const downloadUrls = {
-            windows: 'https://github.com/experimentalui/reception-app/releases/latest/download/reception-app-windows.exe',
-            macos: 'https://github.com/experimentalui/reception-app/releases/latest/download/reception-app-macos.dmg',
-            android: 'https://github.com/experimentalui/reception-app/releases/latest/download/reception-app-android.apk',
-            linux: 'https://github.com/experimentalui/reception-app/releases/latest/download/reception-app-linux.appimage'
+            windows: './releases/windows/reception-app-windows.exe',
+            macos: './releases/macos/ReceptionLocal-0.7.11.dmg',
+            android: './releases/android/Reception-Local-0.7.11.apk',
+            linux: './releases/linux/reception-app-linux.appimage'
         };
         
         return downloadUrls[platform] || '#';
+    }
+
+    // Check if download file exists
+    async checkFileExists(url) {
+        try {
+            const response = await fetch(url, { method: 'HEAD' });
+            return response.ok;
+        } catch (error) {
+            // If HEAD request fails (common in local development), 
+            // try a GET request with range header to minimize data transfer
+            try {
+                const response = await fetch(url, { 
+                    method: 'GET',
+                    headers: { 'Range': 'bytes=0-0' }
+                });
+                return response.ok || response.status === 206; // 206 = Partial Content
+            } catch (fallbackError) {
+                // For local development, assume files exist if they're marked as available
+                // This handles cases where CORS blocks file existence checks
+                console.warn('File existence check failed, assuming file exists for local development:', url);
+                return true;
+            }
+        }
+    }
+
+    // Get available releases
+    getAvailableReleases() {
+        return {
+            windows: {
+                available: false, // Will be set to true when Windows build is added
+                url: './releases/windows/reception-app-windows.exe',
+                fileName: 'reception-app-windows.exe',
+                platform: 'Windows',
+                description: 'Windows executable (64-bit)'
+            },
+            macos: {
+                available: true, // macOS build is now available
+                url: './releases/macos/ReceptionLocal-0.7.11.dmg',
+                fileName: 'ReceptionLocal-0.7.11.dmg',
+                platform: 'macOS',
+                description: 'macOS disk image (Intel & Apple Silicon) - v0.7.11'
+            },
+            android: {
+                available: true, // Android build is now available
+                url: './releases/android/Reception-Local-0.7.11.apk',
+                fileName: 'Reception-Local-0.7.11.apk',
+                platform: 'Android',
+                description: 'Android application package - v0.7.11'
+            }
+        };
     }
 
     showFeedbackModal() {
@@ -1515,22 +1697,155 @@ class ReceptionWebsite {
 }
 
 // Global function for direct download button
-function handleDirectDownload() {
+async function handleDirectDownload() {
     const website = window.receptionWebsite;
     if (website) {
         const platform = website.detectPlatform();
         const downloadUrl = website.getDirectDownloadUrl();
+        const releases = website.getAvailableReleases();
         
-        if (downloadUrl !== '#') {
-            // For now, show an alert with the platform and URL
-            // In production, this would initiate the actual download
-            alert(`Direct download for ${platform.charAt(0).toUpperCase() + platform.slice(1)} will be available soon!\n\nDownload URL: ${downloadUrl}`);
-            // Uncomment the line below when actual files are available:
-            // window.open(downloadUrl, '_blank');
+        if (downloadUrl !== '#' && releases[platform]) {
+            const release = releases[platform];
+            
+            if (release.available) {
+                // Platform is marked as available, initiate download
+                const link = document.createElement('a');
+                link.href = downloadUrl;
+                link.download = release.fileName;
+                link.style.display = 'none';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Show success message
+                showDownloadStatus('success', `Downloading ${release.platform} version...`);
+            } else {
+                // Platform is not available yet
+                showDownloadStatus('info', `${release.platform} version is coming soon!\n\nWe're working on bringing Reception App to ${release.platform}. Check back later for updates.`);
+            }
         } else {
-            alert('Direct download is not available for your platform yet.');
+            showDownloadStatus('warning', 'Direct download is not available for your platform yet.');
         }
     }
+}
+
+// Function to show download status messages
+function showDownloadStatus(type, message) {
+    // Create status notification
+    const notification = document.createElement('div');
+    notification.className = `download-notification ${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <div class="notification-icon">
+                ${type === 'success' ? '<i class="fas fa-download"></i>' : 
+                  type === 'info' ? '<i class="fas fa-info-circle"></i>' : 
+                  '<i class="fas fa-exclamation-triangle"></i>'}
+            </div>
+            <div class="notification-text">${message}</div>
+            <button class="notification-close">&times;</button>
+        </div>
+    `;
+    
+    // Add styles for notification
+    const style = document.createElement('style');
+    style.textContent = `
+        .download-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            max-width: 400px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 10000;
+            font-family: 'Inter', sans-serif;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        .download-notification.success {
+            background: #10b981;
+            color: white;
+        }
+        
+        .download-notification.info {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .download-notification.warning {
+            background: #f59e0b;
+            color: white;
+        }
+        
+        .notification-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .notification-icon {
+            font-size: 18px;
+            margin-top: 2px;
+        }
+        
+        .notification-text {
+            flex: 1;
+            white-space: pre-line;
+        }
+        
+        .notification-close {
+            background: none;
+            border: none;
+            color: inherit;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 0;
+            margin-left: 10px;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+    `;
+    
+    document.head.appendChild(style);
+    document.body.appendChild(notification);
+    
+    // Close notification
+    const closeNotification = () => {
+        notification.style.animation = 'slideOut 0.3s ease-in';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                document.body.removeChild(notification);
+            }
+            if (style.parentNode) {
+                document.head.removeChild(style);
+            }
+        }, 300);
+    };
+    
+    notification.querySelector('.notification-close').addEventListener('click', closeNotification);
+    
+    // Auto close after 5 seconds
+    setTimeout(closeNotification, 5000);
 }
 
 // Initialize the website when DOM is loaded
