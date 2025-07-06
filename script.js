@@ -286,7 +286,7 @@ const translations = {
         
         // Dynamic news items
         "news.dynamic.item1.title": "Reception Local v0.7.11 Released",
-        "news.dynamic.item1.content": "We're excited to announce the release of Reception Local v0.7.11!",
+        "news.dynamic.item1.content": "We're excited to announce the release of Reception Local v0.7.11!\n\nFirst platforms for testing - Android, Windows, MacOS (Mac M1-M4)",
         "news.dynamic.item2.title": "Site launch", 
         "news.dynamic.item2.content": "First version of the this site was launched",
         
@@ -596,7 +596,7 @@ const translations = {
         
         // Dynamic news items - Russian
         "news.dynamic.item1.title": "Выпущена Reception Local v0.7.11",
-        "news.dynamic.item1.content": "Мы рады объявить о выпуске Reception Local v0.7.11! Первые платформы для тестирования - Android, MacOS (Ноутбуки Mac M1-M4)",
+        "news.dynamic.item1.content": "Мы рады объявить о выпуске Reception Local v0.7.11!\n\nПервые платформы для тестирования - Android, Windows, MacOS (Ноутбуки Mac M1-M4)",
         "news.dynamic.item2.title": "Запущан сайт",
         "news.dynamic.item2.content": "Первая версия сайта запущена",
         
