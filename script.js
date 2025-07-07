@@ -309,7 +309,8 @@ const translations = {
         "interface.client1": "Anna Petrova",
         "interface.client2": "Maria Ivanova",
         "interface.client3": "Elena Kozlova",
-        "interface.client4": "Irina Smirnova"
+        "interface.client4": "Irina Smirnova",
+        "interface.disclaimer": "*Screens are simplified for the website"
     },
     ru: {
         "nav.features": "Возможности",
@@ -621,7 +622,8 @@ const translations = {
         "interface.client1": "Анна Петрова",
         "interface.client2": "Мария Иванова",
         "interface.client3": "Елена Козлова",
-        "interface.client4": "Ирина Смирнова"
+        "interface.client4": "Ирина Смирнова",
+        "interface.disclaimer": "*Экраны приложения упрощены на сайте"
     }
 };
 

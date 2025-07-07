@@ -157,6 +157,12 @@ body {
     height: 70px;
 }
 
+/* Optimize container for Russian text */
+[lang="ru"] .nav-container {
+    max-width: 1300px;
+    padding: 0 15px;
+}
+
 .nav-logo {
     display: flex;
     align-items: center;
@@ -191,12 +197,24 @@ body {
     list-style: none;
 }
 
+/* Optimize for longer Russian text */
+[lang="ru"] .nav-menu {
+    gap: 20px;
+}
+
 .nav-link {
     color: var(--gray-600);
     text-decoration: none;
     font-weight: 500;
     transition: var(--transition);
     position: relative;
+    white-space: nowrap;
+}
+
+/* Slightly smaller font for Russian to fit better */
+[lang="ru"] .nav-link {
+    font-size: 14px;
+    font-weight: 400;
 }
 
 .nav-link:hover {
@@ -222,6 +240,36 @@ body {
     display: flex;
     align-items: center;
     gap: 16px;
+}
+
+/* Tighter spacing for Russian layout */
+[lang="ru"] .nav-actions {
+    gap: 12px;
+}
+
+/* Additional responsive optimizations for Russian text */
+@media (max-width: 1200px) {
+    [lang="ru"] .nav-menu {
+        gap: 16px;
+    }
+    
+    [lang="ru"] .nav-link {
+        font-size: 13px;
+    }
+    
+    [lang="ru"] .nav-container {
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 1100px) {
+    [lang="ru"] .nav-menu {
+        gap: 12px;
+    }
+    
+    [lang="ru"] .nav-actions {
+        gap: 8px;
+    }
 }
 
 .language-switcher {
@@ -293,6 +341,13 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
+}
+
+/* Optimize CTA button for Russian text */
+[lang="ru"] .cta-btn {
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .cta-btn:hover {
@@ -479,7 +534,8 @@ body {
 /* Phone Mockup */
 .hero-image {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     animation: fadeInUp 1s ease-out 0.3s both;
 }
 
@@ -491,6 +547,22 @@ body {
     padding: 8px;
     position: relative;
     box-shadow: var(--shadow-xl);
+}
+
+.phone-disclaimer {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.phone-disclaimer span {
+    font-size: 12px;
+    color: var(--gray-500);
+    font-style: italic;
+    opacity: 0.8;
+}
+
+[data-theme="dark"] .phone-disclaimer span {
+    color: var(--gray-400);
 }
 
 .phone-screen {
@@ -1365,6 +1437,15 @@ body {
         margin: 20px auto 0;
     }
     
+    .phone-disclaimer {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .phone-disclaimer span {
+        font-size: 11px;
+    }
+    
     .news {
         padding: 60px 0;
         overflow-x: hidden;
@@ -1618,6 +1699,15 @@ body {
     .phone-mockup {
         width: 200px;
         height: 400px;
+    }
+    
+    .phone-disclaimer {
+        margin-top: 8px;
+        margin-bottom: 15px;
+    }
+    
+    .phone-disclaimer span {
+        font-size: 10px;
     }
     
     .news-carousel-container {
