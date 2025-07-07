@@ -5,6 +5,8 @@ const translations = {
         "nav.news": "News",
         "nav.about": "About",
         "nav.contact": "Contact",
+        "nav.social": "Social",
+        "nav.legal": "Legal Info",
         "nav.download": "Download Now",
         "nav.theme": "Theme",
         "hero.title": "Reception App",
@@ -314,6 +316,8 @@ const translations = {
         "nav.news": "Новости",
         "nav.about": "О нас",
         "nav.contact": "Контакты",
+        "nav.social": "Социальные сети",
+        "nav.legal": "Правовая информация",
         "nav.download": "Скачать",
         "nav.theme": "Тема",
         "hero.title": "Reception App",
@@ -703,7 +707,23 @@ class ReceptionWebsite {
 
         // Mobile menu item clicks
         document.querySelectorAll('.mobile-menu-item').forEach(item => {
-            item.addEventListener('click', () => {
+            item.addEventListener('click', (e) => {
+                // Special handling for mobile download button
+                if (item.classList.contains('download-btn')) {
+                    e.preventDefault();
+                    // Find the primary button and scroll to it
+                    const primaryBtn = document.querySelector('.primary-btn');
+                    if (primaryBtn) {
+                        const headerHeight = document.querySelector('.header').offsetHeight;
+                        const targetPosition = primaryBtn.offsetTop - headerHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+                
                 // Close mobile menu when item is clicked
                 if (this.isMobileMenuOpen) {
                     this.toggleMobileMenu();

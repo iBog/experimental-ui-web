@@ -1484,7 +1484,8 @@ body {
     }
     
     .footer-content {
-        grid-template-columns: 1fr;
+        display: flex !important;
+        flex-direction: column !important;
         gap: 40px;
         text-align: center;
         padding: 0;
@@ -1515,7 +1516,8 @@ body {
     }
     
     .footer-links {
-        grid-template-columns: 1fr;
+        display: flex !important;
+        flex-direction: column !important;
         gap: 32px;
         text-align: center;
         margin: 0;
