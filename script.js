@@ -142,14 +142,15 @@ const translations = {
         "privacy.section0.content1": "Reception App is a primarily offline mobile application designed for business management and productivity. The app operates locally on your device and does not require internet connectivity for core functionality.",
         "privacy.section0.content2": "Limited online features include: contacting our support team and opening external website URLs through your device's default browser. All data processing and storage occurs locally on your device.",
         "privacy.section1.title": "Information We Collect",
-        "privacy.section1.content1": "Information We Do NOT Collect: Reception App does not collect, store, or transmit personal information, user data, or device information to our servers. We do not track your usage, location, or personal activities within the app.",
-        "privacy.section1.content2": "Limited Collection: We may receive basic technical information only when you voluntarily contact our support team via email. This may include information you choose to share about technical issues or feedback.",
-        "privacy.section1.content3": "Local Data: All your business data, settings, and app usage information is stored locally on your device and remains under your complete control.",
+        "privacy.section1.content1": "Information We Do NOT Collect: Reception App does not collect, store, or transmit personal information, user data, or device information to our servers. We do not track your location or personal activities within the app.",
+        "privacy.section1.content2": "Anonymous Usage Analytics: The app collects anonymous analytics data about the most frequently used functions and features to help us improve the user experience. This data is completely anonymized, contains no personal information, and cannot be linked back to individual users or devices.",
+        "privacy.section1.content3": "Limited Collection: We may receive basic technical information only when you voluntarily contact our support team via email. This may include information you choose to share about technical issues or feedback.",
+        "privacy.section1.content4": "Local Data: All your business data, settings, and app usage information is stored locally on your device and remains under your complete control.",
         "privacy.section2.title": "How Your Data is Handled",
         "privacy.section2.intro": "Reception App operates with a privacy-first approach:",
         "privacy.section2.item1": "All data processing occurs locally on your device",
         "privacy.section2.item2": "No data synchronization or cloud storage services",
-        "privacy.section2.item3": "No user analytics or tracking mechanisms",
+        "privacy.section2.item3": "Only anonymous usage analytics for feature optimization, no personal tracking",
         "privacy.section2.item4": "No advertising networks or third-party data sharing",
         "privacy.section2.item5": "Support communications are handled manually and securely",
         "privacy.section2.item6": "External URLs open in your device's browser with standard web privacy policies",
@@ -446,14 +447,15 @@ const translations = {
         "privacy.section0.content1": "Reception App - это преимущественно офлайн мобильное приложение, предназначенное для управления бизнесом и повышения продуктивности. Приложение работает локально на вашем устройстве и не требует подключения к интернету для основного функционала.",
         "privacy.section0.content2": "Ограниченные онлайн-функции включают: связь с нашей службой поддержки и открытие внешних URL-адресов через браузер вашего устройства по умолчанию. Вся обработка и хранение данных происходит локально на вашем устройстве.",
         "privacy.section1.title": "Информация, которую мы собираем",
-        "privacy.section1.content1": "Информация, которую мы НЕ собираем: Reception App не собирает, не хранит и не передает личную информацию, пользовательские данные или информацию об устройстве на наши серверы. Мы не отслеживаем ваше использование, местоположение или личную активность в приложении.",
-        "privacy.section1.content2": "Ограниченный сбор: Мы можем получать базовую техническую информацию только когда вы добровольно связываетесь с нашей службой поддержки по электронной почте. Это может включать информацию, которую вы решите предоставить о технических проблемах или отзывах.",
-        "privacy.section1.content3": "Локальные данные: Все ваши бизнес-данные, настройки и информация об использовании приложения хранятся локально на вашем устройстве и остаются под вашим полным контролем.",
+        "privacy.section1.content1": "Информация, которую мы НЕ собираем: Reception App не собирает, не хранит и не передает личную информацию, пользовательские данные или информацию об устройстве на наши серверы. Мы не отслеживаем ваше местоположение или личную активность в приложении.",
+        "privacy.section1.content2": "Анонимная аналитика использования: Приложение собирает анонимные данные аналитики о наиболее часто используемых функциях и возможностях для улучшения пользовательского опыта. Эти данные полностью анонимизированы, не содержат личной информации и не могут быть связаны с отдельными пользователями или устройствами.",
+        "privacy.section1.content3": "Ограниченный сбор: Мы можем получать базовую техническую информацию только когда вы добровольно связываетесь с нашей службой поддержки по электронной почте. Это может включать информацию, которую вы решите предоставить о технических проблемах или отзывах.",
+        "privacy.section1.content4": "Локальные данные: Все ваши бизнес-данные, настройки и информация об использовании приложения хранятся локально на вашем устройстве и остаются под вашим полным контролем.",
         "privacy.section2.title": "Как обрабатываются ваши данные",
         "privacy.section2.intro": "Reception App работает с подходом \"конфиденциальность прежде всего\":",
         "privacy.section2.item1": "Вся обработка данных происходит локально на вашем устройстве",
         "privacy.section2.item2": "Нет синхронизации данных или облачных сервисов хранения",
-        "privacy.section2.item3": "Нет аналитики пользователей или механизмов отслеживания",
+        "privacy.section2.item3": "Только анонимная аналитика использования для оптимизации функций, никакого личного отслеживания",
         "privacy.section2.item4": "Нет рекламных сетей или обмена данными с третьими лицами",
         "privacy.section2.item5": "Связь с поддержкой обрабатывается вручную и безопасно",
         "privacy.section2.item6": "Внешние URL открываются в браузере вашего устройства со стандартными политиками веб-конфиденциальности",
@@ -649,8 +651,9 @@ const newsData = [
 
 class ReceptionWebsite {
     constructor() {
-        this.currentLanguage = 'ru';
-        this.currentTheme = 'light';
+        // Check for language preference: URL parameter -> localStorage -> default
+        this.currentLanguage = this.getInitialLanguage();
+        this.currentTheme = localStorage.getItem('theme') || 'light';
         this.isMobileMenuOpen = false;
         this.currentSlide = 0;
         this.maxVisibleCards = 4;
@@ -658,6 +661,27 @@ class ReceptionWebsite {
         this.currentScreen = 0;
         this.phoneInterfaceInterval = null;
         this.init();
+    }
+
+    getInitialLanguage() {
+        // First, check URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lang');
+        
+        if (urlLang && ['en', 'ru'].includes(urlLang)) {
+            // Save URL language to localStorage for future visits
+            localStorage.setItem('language', urlLang);
+            return urlLang;
+        }
+        
+        // Second, check localStorage
+        const storedLang = localStorage.getItem('language');
+        if (storedLang && ['en', 'ru'].includes(storedLang)) {
+            return storedLang;
+        }
+        
+        // Finally, use default
+        return 'ru';
     }
 
     init() {
@@ -844,7 +868,29 @@ class ReceptionWebsite {
             
             // Update HTML lang attribute
             document.documentElement.lang = lang;
+            
+            // Update URL parameter without reloading the page
+            this.updateUrlLanguage(lang);
         }
+    }
+
+    updateUrlLanguage(lang) {
+        const url = new URL(window.location);
+        url.searchParams.set('lang', lang);
+        window.history.replaceState({}, '', url);
+    }
+
+    // Utility function to create links with predefined locale
+    // Usage: createLocaleLink('privacy-policy.html', 'en') returns 'privacy-policy.html?lang=en'
+    static createLocaleLink(page, lang) {
+        if (!['en', 'ru'].includes(lang)) {
+            console.warn(`Invalid language: ${lang}. Supported languages: 'en', 'ru'`);
+            return page;
+        }
+        
+        const url = new URL(page, window.location.origin);
+        url.searchParams.set('lang', lang);
+        return url.href;
     }
 
     loadLanguage(lang) {

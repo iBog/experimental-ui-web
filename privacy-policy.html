@@ -4,6 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - Reception App | ExperimentalUI</title>
+    <script>
+        // Immediately set the language from URL parameter or localStorage to prevent flash
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlLang = urlParams.get('lang');
+            let lang = 'ru'; // default
+            
+            if (urlLang && ['en', 'ru'].includes(urlLang)) {
+                lang = urlLang;
+                localStorage.setItem('language', urlLang);
+            } else {
+                const storedLang = localStorage.getItem('language');
+                if (storedLang && ['en', 'ru'].includes(storedLang)) {
+                    lang = storedLang;
+                }
+            }
+            
+            document.documentElement.lang = lang;
+        })();
+    </script>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -149,9 +169,10 @@
                 <p data-i18n="privacy.section0.content2">Limited online features include: contacting our support team and opening external website URLs through your device's default browser. All data processing and storage occurs locally on your device.</p>
 
                 <h2 data-i18n="privacy.section1.title">Information We Collect</h2>
-                <p data-i18n="privacy.section1.content1"><strong>Information We Do NOT Collect:</strong> Reception App does not collect, store, or transmit personal information, user data, or device information to our servers. We do not track your usage, location, or personal activities within the app.</p>
-                <p data-i18n="privacy.section1.content2"><strong>Limited Collection:</strong> We may receive basic technical information only when you voluntarily contact our support team via email. This may include information you choose to share about technical issues or feedback.</p>
-                <p data-i18n="privacy.section1.content3"><strong>Local Data:</strong> All your business data, settings, and app usage information is stored locally on your device and remains under your complete control.</p>
+                <p data-i18n="privacy.section1.content1"><strong>Information We Do NOT Collect:</strong> Reception App does not collect, store, or transmit personal information, user data, or device information to our servers. We do not track your location or personal activities within the app.</p>
+                <p data-i18n="privacy.section1.content2"><strong>Anonymous Usage Analytics:</strong> The app collects anonymous analytics data about the most frequently used functions and features to help us improve the user experience. This data is completely anonymized, contains no personal information, and cannot be linked back to individual users or devices.</p>
+                <p data-i18n="privacy.section1.content3"><strong>Limited Collection:</strong> We may receive basic technical information only when you voluntarily contact our support team via email. This may include information you choose to share about technical issues or feedback.</p>
+                <p data-i18n="privacy.section1.content4"><strong>Local Data:</strong> All your business data, settings, and app usage information is stored locally on your device and remains under your complete control.</p>
 
                 <h2 data-i18n="privacy.section2.title">How Your Data is Handled</h2>
                 <p data-i18n="privacy.section2.intro">Reception App operates with a privacy-first approach:</p>

@@ -4,6 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Service - Reception App by ExperimentalUI</title>
+    <script>
+        // Immediately set the language from URL parameter or localStorage to prevent flash
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlLang = urlParams.get('lang');
+            let lang = 'ru'; // default
+            
+            if (urlLang && ['en', 'ru'].includes(urlLang)) {
+                lang = urlLang;
+                localStorage.setItem('language', urlLang);
+            } else {
+                const storedLang = localStorage.getItem('language');
+                if (storedLang && ['en', 'ru'].includes(storedLang)) {
+                    lang = storedLang;
+                }
+            }
+            
+            document.documentElement.lang = lang;
+        })();
+    </script>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
