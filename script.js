@@ -1328,7 +1328,7 @@ class ReceptionWebsite {
                     
                     <div class="download-buttons">
                         <!-- App Store -->
-                        <a href="#" class="store-btn app-store" onclick="alert('Reception App will be available on the App Store soon!')">
+                        <a href="https://apps.apple.com/us/app/reception-local/id6748019731" class="store-btn app-store" target="_blank" rel="noopener noreferrer">
                             <div class="store-icon">
                                 <img src="images/app-store-icon.png" alt="App Store">
                             </div>
@@ -1339,7 +1339,7 @@ class ReceptionWebsite {
                         </a>
                         
                         <!-- Google Play -->
-                        <a href="#" class="store-btn google-play" onclick="alert('Reception App will be available on Google Play soon!')">
+                        <a href="https://play.google.com/store/apps/details?id=com.experimentalui.apps.reception.local" class="store-btn google-play" target="_blank" rel="noopener noreferrer">
                             <div class="store-icon">
                                 <img src="images/google-play-icon.png" alt="Google Play">
                             </div>
@@ -1349,7 +1349,8 @@ class ReceptionWebsite {
                             </div>
                         </a>
                         
-                        <!-- Huawei AppGallery -->
+                        <!-- Huawei AppGallery - Temporarily Disabled -->
+                        <!--
                         <a href="#" class="store-btn huawei-store" onclick="alert('Reception App will be available on AppGallery soon!')">
                             <div class="store-icon">
                                 <img src="images/huawei-appgallery-icon.png" alt="AppGallery">
@@ -1359,8 +1360,10 @@ class ReceptionWebsite {
                                 <div class="store-title">AppGallery</div>
                             </div>
                         </a>
+                        -->
                         
-                        <!-- RuStore -->
+                        <!-- RuStore - Temporarily Disabled -->
+                        <!--
                         <a href="#" class="store-btn ru-store" onclick="alert('Reception App will be available on RuStore soon!')">
                             <div class="store-icon">
                                 <img src="images/rustore-icon.png" alt="RuStore">
@@ -1369,6 +1372,7 @@ class ReceptionWebsite {
                                 <div class="store-title single-line">RuStore</div>
                             </div>
                         </a>
+                        -->
                         
                         <!-- Direct Download -->
                         <a href="#" class="store-btn direct-download" onclick="handleDirectDownload()">
